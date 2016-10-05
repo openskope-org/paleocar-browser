@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC 
+	"-//W3C//DTD XHTML 1.1 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>${title}</title>
+<!--    <link href="<@s.url value='/styles/main.css'/>" rel="stylesheet" type="text/css" media="all"/> -->
+    ${head}
+</head>
+<body id="page-home" class="container-fluid">
+        <div id="header" class="clearfix">
+<div class="pull-right"><a href="http://www.envirecon.org/">SKOPE Website</a> | <a href="http://www.envirecon.org/skope-prototype-users-guide">User Guide</a></div>
+            <h1>SKOPE: Synthesizing Knowledge of Past Environments</h1>
+        	Providing state-of-the-art information about past environments experienced by humans.
+            <hr />
+        </div>
+        
+        <div id="content" class="clearfix container-fluid">
+            	${body}
+                <hr />
+            
+            <!--
+            <div id="sub">
+            	<h3>Sub Content</h3>
+            </div> -->
+            
+            
+            <div id="local">
+            </div>
+            
+        </div>
+        
+        <div id="footer" class="clearfix" class="container-fluid">
+Data is Copyright &copy; 2015, PRISM Climate Group, Oregon State University, http://prism.oregonstate.edu .<br/>
+This material is based upon work supported by the National Science Foundation under Grant Nos. SMA 1439591, SMA 1439603, and SMA 1439516 to Arizona State University, the University of Illinois at Urbana-Champaign and Washington State University.<br/>
+
+Cite this: <b>doi:10.6067/XCV8ZW1NM5</b>
+        </div>
+        
+    </div>
+    
+    <div id="extra1">&nbsp;</div>
+    <div id="extra2">&nbsp;</div>
+</body>
+</html>
