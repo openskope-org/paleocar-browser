@@ -2,6 +2,7 @@
 .classpath
 target
 .DS_Store
+bower_components
 
 node
 node_modules
