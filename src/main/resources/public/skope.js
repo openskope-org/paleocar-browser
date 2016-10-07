@@ -320,7 +320,7 @@ function _drawRaster() {
     }
     
     // build the tile URL path + filename + year + color + leaflet params
-    var currentTileLayer_ = L.tileLayer('/browse/img/{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
+    var currentTileLayer_ = L.tileLayer('http://demo.envirecon.org/browse/img/{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
         tms : true,
         tile : _getActiveSelection(),
         time : 1 + _getTime(),
