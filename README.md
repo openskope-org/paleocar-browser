@@ -1,15 +1,7 @@
-# skope
+PaleoCAR Browser
+================
+
+The project in this repo represents an exploration of alternative technologies for 
+implementing the SKOPE system.  The repo is a fork of [digital-antiquity/skope](https://github.com/digital-antiquity/skope) which stores the SKOPE I prototype.
 
 
-todo
-# handle animations
-# add other maps (more political boundaries)
-# improve color ranges and add color key
-# fix legend data indicators for graphs
-# add year selectors
-
-
-####
-Different reference implementations for processing skope data
-- PostGIS for querying (slow, but sped up by multi-threading queries
-- lucene faster, and sped up by caching by QuadTree from ( http://koti.mbnet.fi/ojalesa/quadtree/quadtree_intro.htm )
