@@ -13,17 +13,17 @@
 use threads;
 
 my $GDAL_MERGE = "/Library/Frameworks/GDAL.framework/Programs/gdal_merge.py";
-my $GDAL_TRANSLATE = "gdal_translate";
+my $GDAL_TRANSLATE = "/Library/Frameworks/GDAL.framework/Programs/gdal_translate";
 
 mkdir("out");
 mkdir("out/tmp");
 mkdir("out/comb");
-mkdir("in");
+#mkdir("in");
 
 my @prefixes = ();
 
-my $cmd="mv *.recon.* in/";
-system($cmd) or print "$?";
+#my $cmd="mv *.recon.* in/";
+#system($cmd) or print "$?";
 
 print ">> PROCESSING INPUTS AND CREATING LATITUDE BASED PASSES \n\n";
 
@@ -55,7 +55,7 @@ foreach my $thr (@threads) {
 print "\n>> PROCESSING LATITUDE BASED PASSES EXTRACTING BANDS AND CREATING UNIFIED BANDS\n\n";
 
 # taking each "strip" and pulling out each "year's" worth of data
-foreach my $i (1..2000) {
+foreach my $i (1999..2000) {
 	@threads = ();
 	print ">>> PROCESSING BAND $i \n\n";	
 	foreach my $prefix (@prefixes) {
