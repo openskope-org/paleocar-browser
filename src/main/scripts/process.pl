@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 
+
 ##################################################################################################################
 #
 # This script takes the input files from Kyle and follows a few processes:
@@ -10,26 +11,40 @@
 #
 # This script is dependent on GDAL being installed on your local machine
 
+# @begin reslice_paleocar_retrodictions
+# @in lat_long_slices @uri file:in/{lat}W{long}N.recon.tif
+# @out year_slices @uri file:out/merge_{year}.tif
+
 use threads;
 
-my $GDAL_MERGE = "/Library/Frameworks/GDAL.framework/Programs/gdal_merge.py";
-my $GDAL_TRANSLATE = "/Library/Frameworks/GDAL.framework/Programs/gdal_translate";
+# @begin define_gdal_commands
+# @out $GDAL_MERGE @as gdal_merge_command
+# @out $GDAL_TRANSLATE @as gdal_translate_command
+my $GDAL_MERGE = "gdal_merge.py";
+my $GDAL_TRANSLATE = "gdal_translate";
+# @end define_gdal_commands
 
+# @begin create_output_dirs
 mkdir("out");
 mkdir("out/tmp");
 mkdir("out/comb");
-#mkdir("in");
+# @out directories_created
+# @end create_output_dirs
 
 my @prefixes = ();
 
-#my $cmd="mv *.recon.* in/";
-#system($cmd) or print "$?";
 
+# @begin combine_data_over_latitude
+# @param directories_created
+# @param $GDAL_MERGE @as gdal_merge_command
+# @in lat_long_slices
+# @out long_slices @uri file:out/comb/{long}W_comb.tif
 print ">> PROCESSING INPUTS AND CREATING LATITUDE BASED PASSES \n\n";
 
 my @seq = (103..115);
 my @prefixes = ();
 my @threads = ();
+
 # creates a "strip" based on latitude of all data for that strip across 2000 years (useful for getting all data in one place)
 foreach my $i (@seq) {
 
@@ -50,12 +65,18 @@ foreach my $i (@seq) {
 foreach my $thr (@threads) {
     $thr->join();
 }
+# @end combine_data_over_latitude
 
+
+# @begin split_data_by_year
+# @param gdal_translate_command
+# @in long_slices @uri file:out/comb/{long}W_comb.tif
+# @out long_year_slices @uri file:out/tmp/{long}W_comb_{year}.tif
 
 print "\n>> PROCESSING LATITUDE BASED PASSES EXTRACTING BANDS AND CREATING UNIFIED BANDS\n\n";
 
 # taking each "strip" and pulling out each "year's" worth of data
-foreach my $i (1999..2000) {
+foreach my $i (1..2000) {
 	@threads = ();
 	print ">>> PROCESSING BAND $i \n\n";	
 	foreach my $prefix (@prefixes) {
@@ -71,6 +92,12 @@ foreach my $i (1999..2000) {
 	foreach my $thr (@threads) {
 	    $thr->join();
 	}
+# @end split_data_by_year
+
+# @begin combine_data_over_longitude
+# @param $GDAL_MERGE @as gdal_merge_command
+# @in long_year_slices @uri file:out/tmp/{long}W_comb_{year}.tif
+# @out year_slices @uri file:out/merge_{year}.tif
 
 	# taking each "year" and creating a combined tiff
 	my $outfile = "out/merge_".$i.".tif";
@@ -79,4 +106,6 @@ foreach my $i (1999..2000) {
 	print "\n  ===> " . $cmd . " --> ";
 	system($cmd) or print STDERR "$?";
 }
+# @end combine_data_over_longitude
 
+# @end reslice_paleocar_retrodictions
