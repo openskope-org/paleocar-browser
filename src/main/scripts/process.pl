@@ -17,26 +17,26 @@
 
 use threads;
 
-# @begin define_gdal_commands
-# @out $GDAL_MERGE @as gdal_merge_command
-# @out $GDAL_TRANSLATE @as gdal_translate_command
+# begin define_gdal_commands
+# out $GDAL_MERGE as gdal_merge_command
+# out $GDAL_TRANSLATE as gdal_translate_command
 my $GDAL_MERGE = "gdal_merge.py";
 my $GDAL_TRANSLATE = "gdal_translate";
-# @end define_gdal_commands
+# end define_gdal_commands
 
-# @begin create_output_dirs
+# begin create_output_dirs
 mkdir("out");
 mkdir("out/tmp");
 mkdir("out/comb");
-# @out directories_created
-# @end create_output_dirs
+# out directories_created
+# end create_output_dirs
 
 my @prefixes = ();
 
 
-# @begin combine_data_over_latitude
-# @param directories_created
-# @param $GDAL_MERGE @as gdal_merge_command
+# @begin combine_latitudes @desc Combine (1deg x 1deg x 2000yr) columns \n into (1deg x 12deg x 2000yr) slabs
+# param directories_created
+# param $GDAL_MERGE as gdal_merge_command
 # @in lat_long_slices
 # @out long_slices @uri file:out/comb/{long}W_comb.tif
 print ">> PROCESSING INPUTS AND CREATING LATITUDE BASED PASSES \n\n";
@@ -45,7 +45,6 @@ my @seq = (103..115);
 my @prefixes = ();
 my @threads = ();
 
-# creates a "strip" based on latitude of all data for that strip across 2000 years (useful for getting all data in one place)
 foreach my $i (@seq) {
 
 	my $prefix = $i."W_comb";
@@ -65,11 +64,11 @@ foreach my $i (@seq) {
 foreach my $thr (@threads) {
     $thr->join();
 }
-# @end combine_data_over_latitude
+# @end combine_latitudes
 
 
-# @begin split_data_by_year
-# @param gdal_translate_command
+# @begin split_years @desc Split (1deg x 12deg x 2000yr) slabs \n into (1deg x 12deg x 1yr) columns 
+# param gdal_translate_command
 # @in long_slices @uri file:out/comb/{long}W_comb.tif
 # @out long_year_slices @uri file:out/tmp/{long}W_comb_{year}.tif
 
@@ -92,10 +91,10 @@ foreach my $i (1..2000) {
 	foreach my $thr (@threads) {
 	    $thr->join();
 	}
-# @end split_data_by_year
+# @end split_years
 
-# @begin combine_data_over_longitude
-# @param $GDAL_MERGE @as gdal_merge_command
+# @begin combine_longitudes @desc Combine (1deg x 12deg x 1yr) columns \n into (13deg x 12deg x 1yr) slabs
+# param $GDAL_MERGE as gdal_merge_command
 # @in long_year_slices @uri file:out/tmp/{long}W_comb_{year}.tif
 # @out year_slices @uri file:out/merge_{year}.tif
 
@@ -106,6 +105,6 @@ foreach my $i (1..2000) {
 	print "\n  ===> " . $cmd . " --> ";
 	system($cmd) or print STDERR "$?";
 }
-# @end combine_data_over_longitude
+# @end combine_longitudes
 
 # @end reslice_paleocar_retrodictions

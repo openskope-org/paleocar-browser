@@ -1,0 +1,21 @@
+package org.skope.service.locationinfo.model;
+
+public class LocationInfoResponse {
+    
+    private Map<String, String[]> data;
+
+	public LocationInfoResponse() {}
+
+    public LocationInfoResponse(Map<String, String[]> data) {
+        this();
+        this.data = data;
+    }
+
+    public void setData(Map<String, String[]> data) {
+        this.data = data;
+    }
+
+    public Map<String, String[]> getData() {
+        return this.data;
+    }
+}
