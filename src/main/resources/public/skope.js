@@ -362,6 +362,7 @@ function _getDetail(l1, l2) {
     // get the data
     ajax.success(function(data) {
     }).then(function(data) {
+        data = data.data;
         $("#infodetail").removeClass("hidden");
         // make the download link
         $("#downloadLink").click(function(e) {
