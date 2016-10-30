@@ -36,6 +36,10 @@ public class LocationInfoController {
         };
     };
 
+
+	@Value("${raster-service.data-dir}")
+	public String dataDirectory;
+
 	@RequestMapping(value="detail", method=RequestMethod.GET)
     @ResponseBody
 	public LocationInfoResponse getDetail(
@@ -47,7 +51,7 @@ public class LocationInfoController {
 
         for (String fileName : files) {
             String commandLine = String.format(
-                "gdallocationinfo -valonly -wgs84 %s %s %s", "/home/tmcphill/skope/data/" + fileName, latitude, longitude);
+                "gdallocationinfo -valonly -wgs84 %s %s %s", dataDirectory + "/" + fileName, longitude, latitude);
             System.out.println(commandLine);
             StreamSink streams[] = ProcessRunner.run(commandLine, "", new String[0], null);
             response.put(fileName, streams[0].toString().split("\\s"));
