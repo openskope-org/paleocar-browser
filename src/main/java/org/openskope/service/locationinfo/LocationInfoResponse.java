@@ -1,4 +1,4 @@
-package org.skope.service.locationinfo.model;
+package org.openskope.service.locationinfo;
 
 import java.util.Map;
 import java.util.HashMap;

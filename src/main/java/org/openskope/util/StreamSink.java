@@ -1,4 +1,4 @@
-package org.skope.util;
+package org.openskope.util;
 
 import java.io.IOException;
 import java.io.InputStream;
