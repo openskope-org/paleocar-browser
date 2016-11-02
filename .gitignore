@@ -2,22 +2,4 @@
 .classpath
 target
 .DS_Store
-bower_components
 
-node
-node_modules
-bin
-/lib/
-src/main/webapp/components
-prism.sql.gz
-indexes
-map
-smal-indexes
-datadir
-skope.properties
-src/main/webapp/img
-process.sh
-/data/
-indexes_
-manifest.json
-images
