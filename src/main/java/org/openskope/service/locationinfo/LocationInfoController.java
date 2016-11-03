@@ -20,7 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController @EnableAutoConfiguration @CrossOrigin @RequestMapping("/browse")
+@RestController 
+@EnableAutoConfiguration 
+@CrossOrigin 
+@RequestMapping("/browse")
 public class LocationInfoController {
     
     private final static String files[];
@@ -35,7 +38,7 @@ public class LocationInfoController {
     };
 
 
-	@Value("${raster-service.data-dir}")
+	@Value("${rasterdata-service.data-dir}")
 	public String dataDirectory;
 
 	@RequestMapping(value="detail", method=RequestMethod.GET)

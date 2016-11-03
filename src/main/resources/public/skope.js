@@ -16,16 +16,6 @@
         // http://leafletjs.com/reference.html#events
 
         /**
-         * Initialize the javascript
-         */
-        function init() {
-            _initMap();
-            _initSliderAtStartup();
-            _initSlider();
-            setTimeout(_decrementTiles, 250);
-        }
-
-        /**
          * uses xColor/chroma.js to create a nice color gradient similar to gDAL
          */
         function _buildColorScale() {
@@ -311,7 +301,7 @@
             }
             
             // build the tile URL path + filename + year + color + leaflet params
-            var currentTileLayer_ = L.tileLayer('http://demo.envirecon.org/browse/img/{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
+            var currentTileLayer_ = L.tileLayer(config.rasterTileServiceBaseUrl + '/{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
                 tms : true,
                 tile : _getActiveSelection(),
                 time : 1 + _getTime(),
@@ -332,7 +322,7 @@
 
         // handle the click ona  point, render the graphs and setup the download link
         function _getDetail(l1, l2) {
-            var req = "/browse/detail?indexName=skope&x1=" + l1.lng + "&y2=" + l2.lat + "&x2=" + l2.lng + "&y1=" + l1.lat + "&zoom=" + map.getZoom() +
+            var req = config.rasterDataServiceBaseUrl + "?indexName=skope&x1=" + l1.lng + "&y2=" + l2.lat + "&x2=" + l2.lng + "&y1=" + l1.lat + "&zoom=" + map.getZoom() +
                     "&cols=160";
             console.log(req);
             _pause();
@@ -584,13 +574,24 @@
                 min:         0 ,
                 scaleName:   'Precipitation (mm)'
             }
-        ]; 
+        ];
 
-        $( document ).ready(function() {
-            init();
+        var config;
+
+        var onConfigReceived = function(response) {
+            config = response.data;
+            _initMap();
+            _initSliderAtStartup();
+            _initSlider();
+            setTimeout(_decrementTiles, 250);
             _drawRaster();
+        }
+
+        angular.element(document).ready(function() {
+            $http.get("/paleocar-browser/api/v1/config")
+                .then(onConfigReceived);
         });
-  };
+    };
 
   app.controller("MainController", ["$scope", "$http", "$timeout", MainController]);
 
