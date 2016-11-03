@@ -271,19 +271,6 @@
             return files[0].name;
         }
 
-        var currentTileLayer = [];
-
-        // strip out old tiles in animation
-        function _removeOldTiles() {
-            // leave only the top tile
-
-        //    var TIME_BETWEEN = 150;
-        //        setTimeout(_decrementTiles, 100);
-        //    }
-            
-        }
-
-
         function _decrementTiles() {
             var maxId = -1;
             map.eachLayer(function(l) { 
@@ -293,7 +280,6 @@
             });
             map.eachLayer(function(l) { 
                 if (l._url != undefined && l._url.indexOf("{type}") != -1 && parseInt(l._leaflet_id) < parseInt(maxId)) {
-        //            console.log("maxId:" + maxId + " : " + l._leaflet_id);
                     if (l.opacity == undefined ) {
                         l.opacity = 1.0;
                     }
@@ -307,7 +293,6 @@
                     l.opacity = opacity;
                     l.setOpacity(opacity);
                 }
-        //          console.log(l._leaflet_id + " : " + opacity); 
                 }
             });
             setTimeout(_decrementTiles, 300);
@@ -337,9 +322,7 @@
             currentTileLayer_.addTo(map);
             currentTileLayer_.opacity = $("#opacity").val();
             currentTileLayer_.on("load", function() {
-        //        setTimeout(_removeOldTiles, 300);
-                currentTileLayer_.loaded = true;
-                //currentTileLayer.push(currentTileLayer_);
+            currentTileLayer_.loaded = true;
             });
         }
 
