@@ -349,8 +349,8 @@
 
         // handle the click ona  point, render the graphs and setup the download link
         function _getDetail(l1, l2) {
-            var req = "/browse/detail?indexName=" + indexName + "&x1=" + l1.lng + "&y2=" + l2.lat + "&x2=" + l2.lng + "&y1=" + l1.lat + "&zoom=" + map.getZoom() +
-                    "&cols=" + detail;
+            var req = "/browse/detail?indexName=skope&x1=" + l1.lng + "&y2=" + l2.lat + "&x2=" + l2.lng + "&y1=" + l1.lat + "&zoom=" + map.getZoom() +
+                    "&cols=160";
             console.log(req);
             _pause();
             // remove old marker
@@ -530,7 +530,6 @@
             var time = _getTime();
             var sld = $("#slider");
             if (time <=	  $maxX.val() && sld.data("status") == 'play') {
-                // console.log((sld.data("status") == 'play') + " | " + time + " |" + (maxTime - 1));
                 time = parseInt(time) + 1;
                 _setSliderTime(time);
                 _drawRaster();
@@ -567,18 +566,7 @@
             _getDetail(e.latlng, e.latlng);
         }
 
-        // GLOBALS:
-        var indexName = "skope";
-        var max = 800;
-        var detail = 160;
-        var maxTime = 2000;
-        var shouldContinue = true;
         var ajax;
-        if (indexName != "skope") {
-            max = 120;
-            detail = 20;
-        }
-        var lnks = new Array();
 
         var files = [
             {   name:        'GDD_may_sept_demosaic', 
@@ -614,13 +602,6 @@
                 scaleName:   'Precipitation (mm)'
             }
         ]; 
-
-        var fileIdMap = {
-            'GDD_may_sept_demosaic':    0,  
-            'PPT_water_year':           1,  
-            'PPT_may_sept_demosaic':    2,  
-            'PPT_annual_demosaic':      3
-        }
 
         $( document ).ready(function() {
             init();
