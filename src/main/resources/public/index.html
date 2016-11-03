@@ -1,13 +1,9 @@
-<!DOCTYPE html PUBLIC 
-	"-//W3C//DTD XHTML 1.1 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	
-	<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html ng-app="paleocar-browser-app" lang="en">
+
 <head>
     <title>SKOPE: Synthesizing Knowledge of Past Environments</title>
     <meta charset="utf-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script data-require="angular.js@*" data-semver="1.5.7" src="lib/angular/1.5.7/angular.js"></script>
     <script src="lib/angular/1.5.7/angular-animate.js"></script>
@@ -17,14 +13,11 @@
     <link rel="stylesheet" href="lib/seiyria-bootstrap-slider/4.9.1/bootstrap-slider.css">
     <link rel="stylesheet" href="lib/leaflet/0.7.7/leaflet.css" /> 
     <link rel="stylesheet" href="lib/leaflet-draw/0.2.4/leaflet.draw.css" />
-
-    <link rel="stylesheet" href="skope.css" /> 
-    
+    <link rel="stylesheet" href="skope.css" />     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
 </head>
-<body id="page-home" class="container-fluid">
 
+<body id="page-home" class="container-fluid" ng-controller="MainController">>
 
     <div id="header" class="clearfix">
     <div class="pull-right"><a href="http://www.envirecon.org/">SKOPE Website</a> | <a href="http://www.envirecon.org/skope-prototype-users-guide">User Guide</a></div>
@@ -110,82 +103,17 @@
 
 </div>
 
-    <script src="lib/leaflet/0.7.7/leaflet.js"></script>
-    <script src="lib/leaflet-draw/0.2.4/leaflet.draw.js"></script>
-    <script src="lib/jquery/2.1.4/jquery.min.js"></script>
-    <script src="lib/bootstrap/3.3.7/bootstrap.min.js"></script>
-    <script src="lib/d3/3.5.17/d3.min.js"></script>
-    <script src="lib/jquery.preload/1.0.3/jquery.preload.min.js"></script>
-    <script src="lib/blob-util/1.1.1/blob-util.min.js"></script>
-    <script src="lib/seiyria-bootstrap-slider/4.9.1/bootstrap-slider.js"></script>
-    <script src="lib/c3/0.4.11/c3.min.js"></script>
-    <script src="lib/chroma-js/0.6.1/chroma.min.js"></script>
-
-    <script src="skope.js"></script>
-
-<script>
-
-    // GLOBALS:
-    var indexName = "skope";
-    var max = 800;
-    var detail = 160;
-    var maxTime = 2000;
-    var shouldContinue = true;
-    var ajax;
-    if (indexName != "skope") {
-        max = 120;
-        detail = 20;
-    }
-    var lnks = new Array();
-
-    var files = [
-        {   name:        'GDD_may_sept_demosaic', 
-            id:          'GDD_may_sept_demosaic',
-            description: 'Fahrenheit GDD', 
-            color:       '#880000 ',
-            max:         6000 ,
-            min:         0 ,
-            scaleName:   'Temperature'
-        },   
-        {   name:        'PPT_water_year', 
-            id:          'PPT_water_year',
-            description: 'Water-year Precipitation', 
-            color:       '#006666',
-            max:         2000,
-            min:         0 ,
-            scaleName:   'Precipitation (mm)'
-        },   
-        {   name:        'PPT_may_sept_demosaic', 
-            id:          'PPT_may_sept_demosaic',
-            description: 'May-September Precipitation',
-            color:       '#6699FF',
-            max:         2000,
-            min:         0,
-            scaleName:   'Precipitation (mm)'
-        },
-        {   name:        'PPT_annual_demosaic', 
-            id:          'PPT_annual_demosaic',
-            description: 'Annual Precipitation', 
-            color:       '#CC6633',
-            max:         2000, 
-            min:         0 ,
-            scaleName:   'Precipitation (mm)'
-        }
-    ]; 
-
-    var fileIdMap = {
-        'GDD_may_sept_demosaic':    0,  
-        'PPT_water_year':           1,  
-        'PPT_may_sept_demosaic':    2,  
-        'PPT_annual_demosaic':      3
-    }
-
-    $( document ).ready(function() {
-        init();
-        _drawRaster();
-    });
-
-</script>
+<script src="lib/leaflet/0.7.7/leaflet.js"></script>
+<script src="lib/leaflet-draw/0.2.4/leaflet.draw.js"></script>
+<script src="lib/jquery/2.1.4/jquery.min.js"></script>
+<script src="lib/bootstrap/3.3.7/bootstrap.min.js"></script>
+<script src="lib/d3/3.5.17/d3.min.js"></script>
+<script src="lib/jquery.preload/1.0.3/jquery.preload.min.js"></script>
+<script src="lib/blob-util/1.1.1/blob-util.min.js"></script>
+<script src="lib/seiyria-bootstrap-slider/4.9.1/bootstrap-slider.js"></script>
+<script src="lib/c3/0.4.11/c3.min.js"></script>
+<script src="lib/chroma-js/0.6.1/chroma.min.js"></script>
+<script src="skope.js"></script>
 
 <div class="modal fade" id="exportModal">
   <div class="modal-dialog">

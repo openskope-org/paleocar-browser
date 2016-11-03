@@ -1,3 +1,14 @@
+(function() {
+
+  var app = angular.module("paleocar-browser-app", ['ngSanitize']);
+
+  var MainController = function($scope, $http, $timeout) {
+  }
+  
+  app.controller("MainController", ["$scope", "$http", "$timeout", MainController]);
+
+}());
+
 var map;
 // -108.86352539062499, 34.56085936708384) x (-108.86352539062499, 34.56085936708384)
 var NORTH, SOUTH, EAST, WEST;
@@ -109,9 +120,9 @@ L.Control.Command = L.Control.extend({
         controlUI.title = 'Map Commands';
         var first = 0;
         for (var i = files.length - 1; i >= 0; i--) {
-			if (files[i].name.indexOf("PPT_may") > -1 || files[i].name.indexOf("PPT_annual") > -1) {
-				continue;
-			}
+            if (files[i].name.indexOf("PPT_may") > -1 || files[i].name.indexOf("PPT_annual") > -1) {
+                continue;
+            }
             var fldC = L.DomUtil.create("div", 'field-container');
             var rad = L.DomUtil.create("input");
             rad.setAttribute("type", "radio");
@@ -130,7 +141,7 @@ L.Control.Command = L.Control.extend({
             L.DomEvent.addListener(rad, 'change', _drawRaster);
             // L.DomEvent.addListener(span,'mouseup',_drawRaster);
             controlUI.appendChild(fldC);
-			
+            
         }
         return controlDiv;
     }
@@ -204,7 +215,7 @@ function _handleChartScaleChange() {
 
 // initialize and handle Leaflet.draw
 function _drawRectangle() {
-	return;
+    return;
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
     var drawControl = new L.Control.Draw({
@@ -296,11 +307,11 @@ function _decrementTiles() {
             if (opacity < 0) {
                 map.removeLayer(l);
             } else {
-              l.setZIndex(900);
-              opacity -= parseFloat(.08);
-              l.opacity = opacity;
-              l.setOpacity(opacity);
-          }
+            l.setZIndex(900);
+            opacity -= parseFloat(.08);
+            l.opacity = opacity;
+            l.setOpacity(opacity);
+        }
 //          console.log(l._leaflet_id + " : " + opacity); 
         }
     });
@@ -560,4 +571,66 @@ function _reset(e) {
 function _onMapClick(e) {
     _getDetail(e.latlng, e.latlng);
 }
+
+// GLOBALS:
+var indexName = "skope";
+var max = 800;
+var detail = 160;
+var maxTime = 2000;
+var shouldContinue = true;
+var ajax;
+if (indexName != "skope") {
+    max = 120;
+    detail = 20;
+}
+var lnks = new Array();
+
+var files = [
+    {   name:        'GDD_may_sept_demosaic', 
+        id:          'GDD_may_sept_demosaic',
+        description: 'Fahrenheit GDD', 
+        color:       '#880000 ',
+        max:         6000 ,
+        min:         0 ,
+        scaleName:   'Temperature'
+    },   
+    {   name:        'PPT_water_year', 
+        id:          'PPT_water_year',
+        description: 'Water-year Precipitation', 
+        color:       '#006666',
+        max:         2000,
+        min:         0 ,
+        scaleName:   'Precipitation (mm)'
+    },   
+    {   name:        'PPT_may_sept_demosaic', 
+        id:          'PPT_may_sept_demosaic',
+        description: 'May-September Precipitation',
+        color:       '#6699FF',
+        max:         2000,
+        min:         0,
+        scaleName:   'Precipitation (mm)'
+    },
+    {   name:        'PPT_annual_demosaic', 
+        id:          'PPT_annual_demosaic',
+        description: 'Annual Precipitation', 
+        color:       '#CC6633',
+        max:         2000, 
+        min:         0 ,
+        scaleName:   'Precipitation (mm)'
+    }
+]; 
+
+var fileIdMap = {
+    'GDD_may_sept_demosaic':    0,  
+    'PPT_water_year':           1,  
+    'PPT_may_sept_demosaic':    2,  
+    'PPT_annual_demosaic':      3
+}
+
+$( document ).ready(function() {
+    init();
+    _drawRaster();
+});
+
+
 
