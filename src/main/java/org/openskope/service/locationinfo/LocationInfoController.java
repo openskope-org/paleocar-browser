@@ -44,8 +44,8 @@ public class LocationInfoController {
 	@RequestMapping(value="detail", method=RequestMethod.GET)
     @ResponseBody
 	public LocationInfoResponse getDetail(
-            @RequestParam(value="x1", required=true) String longitude,
-            @RequestParam(value="y1", required=true) String latitude
+            @RequestParam(value="lng", required=true) String longitude,
+            @RequestParam(value="lat", required=true) String latitude
         ) throws Exception {
 
         LocationInfoResponse response = new LocationInfoResponse();

@@ -320,21 +320,20 @@
         var charts = [];
 
 
-        // handle the click ona  point, render the graphs and setup the download link
-        function _getDetail(l1, l2) {
-            var req = config.rasterDataServiceBaseUrl + "?indexName=skope&x1=" + l1.lng + "&y2=" + l2.lat + "&x2=" + l2.lng + "&y1=" + l1.lat + "&zoom=" + map.getZoom() +
-                    "&cols=160";
+        // handle the click ona  location, render the graphs and setup the download link
+        function _getDetail(location) {
+            var req = config.rasterDataServiceBaseUrl + "?lng=" + location.lng  + "&lat=" + location.lat;
             console.log(req);
             _pause();
             // remove old marker
             if (marker != undefined) {
                 map.removeLayer(marker);
             }
-            marker = L.marker([ l1.lat, l1.lng ]);
+            marker = L.marker([ location.lat, location.lng ]);
             marker.addTo(map);
 
             // print the coordinates
-            $("#coordinates").html("Lat: " + l1.lat.toFixed(3) + " , Lon:" + l1.lng.toFixed(3));
+            $("#coordinates").html("Lat: " + location.lat.toFixed(3) + " , Lon:" + location.lng.toFixed(3));
 
             var ret = $.Deferred();
             ajax = $.getJSON(req);
@@ -345,8 +344,8 @@
                 $("#infodetail").removeClass("hidden");
                 // make the download link
                 $("#downloadLink").click(function(e) {
-                    var x1 = l1.lng;
-                    var y1 = l1.lat;
+                    var x1 = location.lng;
+                    var y1 = location.lat;
                     var startTime = $minX.val();
                     var endTime = $maxX.val();
                     var url = "export?x1=" + x1 + "&y1=" + y1 + "&startTime=" + startTime + "&endTime=" + endTime;
@@ -536,7 +535,7 @@
         }
 
         function _onMapClick(e) {
-            _getDetail(e.latlng, e.latlng);
+            _getDetail(e.latlng);
         }
 
         var ajax;
