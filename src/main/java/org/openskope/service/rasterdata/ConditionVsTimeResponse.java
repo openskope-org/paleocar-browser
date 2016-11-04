@@ -3,16 +3,12 @@ package org.openskope.service.locationinfo;
 import java.util.Map;
 import java.util.HashMap;
 
-public class LocationInfoResponse {
+public class ConditionVsTimeResponse {
     
     private Map<String, String[]> yearlyValues;
 
-	public LocationInfoResponse() {
+	public ConditionVsTimeResponse() {
         yearlyValues = new HashMap<String,String[]>();
-    }
-
-    public void setData(Map<String, String[]> yearlyValues) {
-        this.yearlyValues = yearlyValues;
     }
 
     public Map<String, String[]> getData() {

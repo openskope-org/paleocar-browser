@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAutoConfiguration 
 @CrossOrigin 
 @RequestMapping("/browse")
-public class LocationInfoController {
+public class RasterDataServiceController {
     
     private final static String files[];
     
@@ -43,12 +43,12 @@ public class LocationInfoController {
 
 	@RequestMapping(value="detail", method=RequestMethod.GET)
     @ResponseBody
-	public LocationInfoResponse getDetail(
+	public ConditionVsTimeResponse getDetail(
             @RequestParam(value="lng", required=true) String longitude,
             @RequestParam(value="lat", required=true) String latitude
         ) throws Exception {
 
-        LocationInfoResponse response = new LocationInfoResponse();
+        ConditionVsTimeResponse response = new ConditionVsTimeResponse();
 
         for (String fileName : files) {
             String commandLine = String.format(
