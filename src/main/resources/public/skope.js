@@ -33,10 +33,10 @@
             L.drawLocal.draw.toolbar.buttons.rectangle = 'Select Region to Export';
 
             map = L.map('map').setView([ 34.56085936708384, -108.86352539062499 ], 5);
-            var tile = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
-                attribution : 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
-                maxZoom : 16
-            });
+            // var Esri_WorldTopoMap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+            //     attribution : 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+            //     maxZoom : 16
+            // });
 
             var Esri_WorldTopoMap = L
                     .tileLayer(
@@ -540,46 +540,12 @@
         }
 
         var ajax;
-
-        var files = [
-            {   name:        'GDD_may_sept_demosaic', 
-                id:          'GDD_may_sept_demosaic',
-                description: 'Fahrenheit GDD', 
-                color:       '#880000 ',
-                max:         6000 ,
-                min:         0 ,
-                scaleName:   'Temperature'
-            },   
-            {   name:        'PPT_water_year', 
-                id:          'PPT_water_year',
-                description: 'Water-year Precipitation', 
-                color:       '#006666',
-                max:         2000,
-                min:         0 ,
-                scaleName:   'Precipitation (mm)'
-            },   
-            {   name:        'PPT_may_sept_demosaic', 
-                id:          'PPT_may_sept_demosaic',
-                description: 'May-September Precipitation',
-                color:       '#6699FF',
-                max:         2000,
-                min:         0,
-                scaleName:   'Precipitation (mm)'
-            },
-            {   name:        'PPT_annual_demosaic', 
-                id:          'PPT_annual_demosaic',
-                description: 'Annual Precipitation', 
-                color:       '#CC6633',
-                max:         2000, 
-                min:         0 ,
-                scaleName:   'Precipitation (mm)'
-            }
-        ];
-
+        var files;
         var config;
 
         var onConfigReceived = function(response) {
             config = response.data;
+            files = config.dataSets;
             _initMap();
             _initSliderAtStartup();
             _initSlider();

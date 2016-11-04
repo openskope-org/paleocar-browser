@@ -1,45 +1,42 @@
 package org.openskope.webapp.paleocarbrowser;
 
+import java.util.Map;
+
 public class PaleocarBrowserConfigResponse {
     
     private String paleocarBrowserBaseUrl;
 	private String rasterTileServiceBaseUrl;
 	private String rasterDataServiceBaseUrl;
-
+	private Object dataSets;
+	
 	public PaleocarBrowserConfigResponse() {}
 
     public PaleocarBrowserConfigResponse(
         String paleocarBrowserBaseUrl, 
         String rasterTileServiceBaseUrl,
-	    String rasterDataServiceBaseUrl
+	    String rasterDataServiceBaseUrl,
+	    Object dataSets
     ) {
         this();
         this.paleocarBrowserBaseUrl = paleocarBrowserBaseUrl;
 	    this.rasterTileServiceBaseUrl = rasterTileServiceBaseUrl;
 	    this.rasterDataServiceBaseUrl = rasterDataServiceBaseUrl;
-    }
-
-    public void setPaleocarBrowserBaseUrl(String paleocarBrowserBaseUrl) {
-        this.paleocarBrowserBaseUrl = paleocarBrowserBaseUrl;
+	    this.dataSets = dataSets;
     }
 
     public String getPaleocarBrowserBaseUrl() {
         return this.paleocarBrowserBaseUrl;
     }
 
-    public void setRasterTileServiceBaseUrl(String rasterTileServiceBaseUrl) {
-        this.rasterTileServiceBaseUrl = rasterTileServiceBaseUrl;
-    }
-
     public String getRasterTileServiceBaseUrl() {
         return this.rasterTileServiceBaseUrl;
     }
 
-    public void setRasterDataServiceBaseUrl(String rasterDataServiceBaseUrl) {
-        this.rasterDataServiceBaseUrl = rasterDataServiceBaseUrl;
-    }
-
     public String getRasterDataServiceBaseUrl() {
         return this.rasterDataServiceBaseUrl;
+    }
+    
+    public Object getDataSets() {
+        return this.dataSets;
     }
 }

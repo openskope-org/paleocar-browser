@@ -1,0 +1,32 @@
+
+- name:        GDD_may_sept_demosaic
+  id:          GDD_may_sept_demosaic
+  description: Fahrenheit GDD
+  color:       '#880000'
+  max:         6000
+  min:         0
+  scaleName:   Temperature
+
+- name:        PPT_water_year
+  id:          PPT_water_year
+  description: Water-year Precipitation
+  color:       '#006666'
+  max:         2000
+  min:         0
+  scaleName:   Precipitation (mm)
+
+- name:        PPT_may_sept_demosaic
+  id:          PPT_may_sept_demosaic
+  description: May-September Precipitation
+  color:       '#6699FF'
+  max:         2000
+  min:         0
+  scaleName:   Precipitation (mm)
+
+- name:        PPT_annual_demosaic
+  id:          PPT_annual_demosaic
+  description: Annual Precipitation
+  color:       '#CC6633'
+  max:         2000
+  min:         0
+  scaleName:   Precipitation (mm)

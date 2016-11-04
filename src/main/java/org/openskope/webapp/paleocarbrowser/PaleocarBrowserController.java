@@ -1,13 +1,15 @@
 package org.openskope.webapp.paleocarbrowser;
 
+import java.io.InputStream;
+import java.util.Map;
+
+import org.yaml.snakeyaml.Yaml;
+
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,11 +22,14 @@ public class PaleocarBrowserController implements InitializingBean {
     private String paleocarBrowserBaseUrl;
 	private String rasterTileServiceBaseUrl;
 	private String rasterDataServiceBaseUrl;
+	private Object dataSets;
+	private Yaml yamlParser = new Yaml();
 
 	@Value("${paleocar-browser.host}") 	    public String paleocarBrowserHost;
 	@Value("${paleocar-browser.prefix}")	public String paleocarBrowserPrefix;
 	@Value("${paleocar-browser.version}")   public String paleocarBrowserVersion;
 	@Value("${paleocar-browser.base}")  	public String paleocarBrowserBase;
+	@Value("${paleocar-browser.datasets}")	public String paleocarBrowserDatasets;
 
 	@Value("${rastertile-service.host}")	public String rasterTileServiceHost;
 	@Value("${rastertile-service.prefix}")	public String rasterTileServicePrefix;
@@ -36,6 +41,8 @@ public class PaleocarBrowserController implements InitializingBean {
 	@Value("${rasterdata-service.version}") public String rasterDataServiceVersion;
 	@Value("${rasterdata-service.base}")  	public String rasterDataServiceBase;
 
+
+	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
 		paleocarBrowserBaseUrl = restUrl(paleocarBrowserHost, paleocarBrowserPrefix, 
                                          paleocarBrowserVersion, paleocarBrowserBase);
@@ -43,14 +50,19 @@ public class PaleocarBrowserController implements InitializingBean {
                                            rasterTileServiceVersion, rasterTileServiceBase);
 		rasterDataServiceBaseUrl = restUrl(rasterDataServiceHost, rasterDataServicePrefix,
                                            rasterDataServiceVersion, rasterDataServiceBase);
+		
+		InputStream s = PaleocarBrowserController.class.getClassLoader().getResourceAsStream(paleocarBrowserDatasets);
+		dataSets = yamlParser.load(s);  
     }
 	
+
 	@RequestMapping(value="config", method=RequestMethod.GET)
 	public PaleocarBrowserConfigResponse getConfiguration() {
 		return new PaleocarBrowserConfigResponse(
 			paleocarBrowserBaseUrl,
 			rasterTileServiceBaseUrl,
-            rasterDataServiceBaseUrl
+            rasterDataServiceBaseUrl,
+            dataSets
 		);
 	}
 
