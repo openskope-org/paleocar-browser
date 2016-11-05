@@ -1,4 +1,4 @@
-package org.openskope.webapp.paleocarbrowser;
+package org.openskope.app.paleocarbrowser;
 
 import java.io.InputStream;
 import java.util.Map;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController 
 @EnableAutoConfiguration 
 @RequestMapping("/${paleocar-browser.prefix}/api/${paleocar-browser.version}/")
-public class PaleocarBrowserController implements InitializingBean {
+public class AppController implements InitializingBean {
 
     private String paleocarBrowserBaseUrl;
 	private String rasterTileServiceBaseUrl;
@@ -51,14 +51,14 @@ public class PaleocarBrowserController implements InitializingBean {
 		rasterDataServiceBaseUrl = restUrl(rasterDataServiceHost, rasterDataServicePrefix,
                                            rasterDataServiceVersion, rasterDataServiceBase);
 		
-		InputStream s = PaleocarBrowserController.class.getClassLoader().getResourceAsStream(paleocarBrowserDatasets);
+		InputStream s = AppController.class.getClassLoader().getResourceAsStream(paleocarBrowserDatasets);
 		dataSets = yamlParser.load(s);  
     }
 	
 
 	@RequestMapping(value="config", method=RequestMethod.GET)
-	public PaleocarBrowserConfigResponse getConfiguration() {
-		return new PaleocarBrowserConfigResponse(
+	public AppConfigResponse getConfiguration() {
+		return new AppConfigResponse(
 			paleocarBrowserBaseUrl,
 			rasterTileServiceBaseUrl,
             rasterDataServiceBaseUrl,
