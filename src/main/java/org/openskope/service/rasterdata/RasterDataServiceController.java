@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController 
 @EnableAutoConfiguration 
 @CrossOrigin 
-@RequestMapping("/browse")
+@RequestMapping("/${rasterdata-service.prefix}/api/${rasterdata-service.version}/")
 public class RasterDataServiceController {
     
     private final static String files[];
@@ -33,18 +33,16 @@ public class RasterDataServiceController {
             "GDD_may_sept_demosaic.tif",
             "PPT_annual_demosaic.tif",
             "PPT_may_sept_demosaic.tif",
-            "PPT_water_year.tif"   
+            "PPT_water_year.tif"
         };
     };
 
+	@Value("${rasterdata-service.data-dir}") public String dataDirectory;
 
-	@Value("${rasterdata-service.data-dir}")
-	public String dataDirectory;
-
-	@RequestMapping(value="detail", method=RequestMethod.GET)
+	@RequestMapping(value="timeseries", method=RequestMethod.GET)
     @ResponseBody
 	public ConditionVsTimeResponse getDetail(
-            @RequestParam(value="lng", required=true) String longitude,
+            @RequestParam(value="long", required=true) String longitude,
             @RequestParam(value="lat", required=true) String latitude
         ) throws Exception {
 
