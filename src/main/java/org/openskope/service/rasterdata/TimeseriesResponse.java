@@ -1,13 +1,13 @@
-package org.openskope.service.locationinfo;
+package org.openskope.service.rasterdata;
 
 import java.util.Map;
 import java.util.HashMap;
 
-public class ConditionVsTimeResponse {
+public class TimeseriesResponse {
     
     private Map<String, String[]> yearlyValues;
 
-	public ConditionVsTimeResponse() {
+	public TimeseriesResponse() {
         yearlyValues = new HashMap<String,String[]>();
     }
 
