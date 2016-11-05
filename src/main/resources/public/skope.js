@@ -322,6 +322,7 @@
 
         // handle the click ona  location, render the graphs and setup the download link
         function _getDetail(location) {
+            var req = config.rasterDataServiceBaseUrl + "timeseries?long=" + location.lng  + "&lat=" + location.lat;
             console.log(req);
             _pause();
             // remove old marker
