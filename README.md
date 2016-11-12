@@ -2,13 +2,11 @@ PaleoCAR Browser
 ================
 
 This repo represents an exploration of alternative technologies for implementing the SKOPE system.  It is a fork of [digital-antiquity/skope](https://github.com/digital-antiquity/skope) 
-which stores code for the SKOPE I prototype.  The new implementation here--the **PaleoCAR browser**--is designed to (1) make it easy for the browser-based frontend to employ different implementations of the backend services; and (2) enable anyone to use the **PaleoCAR browser** with different data sets without installing this data on the production server.
+which stores code for the SKOPE I prototype.  The current implementation of the **PaleoCAR browser** is designed to (1) make it easy for the browser-based frontend to employ different implementations of the backend services; and (2) enable anyone to use the **PaleoCAR browser** with different data sets without installing this data on the production server.
 
-Default backend services are included in the **PaleoCAR browser** application so that the entire prototpe can be run by executing a single JAR file. Although only a Java runtime is needed to execute the jar, GDAL also must be installed on the same system if the built-in raster-data service is to be employed.
+Default backend services are included in the **PaleoCAR browser** application so that the entire prototpe can be run by executing a single JAR file. Although only a Java runtime is needed to execute the jar, GDAL binaries also must be installed on the same system if the built-in raster-data service is to be employed.
 
-The remainder of this README describes how to run the PaleoCAR browser and how to configure it to use different backend services or datasets.
-
-A demonstration of the PaloeCAR browser can be found at [http://45.79.81.187:8000/](http://45.79.81.187:8000/).
+The remainder of this README describes how to run the PaleoCAR browser and how to configure it to use different backend services or datasets. A demonstration of the PaloeCAR browser can be found at [http://45.79.81.187:8000/](http://45.79.81.187:8000/).
 
 Running the PaleoCAR backend
 ----------------------------
@@ -28,15 +26,14 @@ A JRE may be downloaded from Oracle's [Java SE Downloads](http://www.oracle.com/
 
 ### Install GDAL 
 
-The PaleoCAR backend services included in the default packaging depend on a local installation of [GDAL](http://www.gdal.org/) (Geospation Data Abstraction Library).  Currently only the program [gdallocationinfo](http://www.gdal.org/gdallocationinfo.html) is needed.  In particular, the Python bindings are not yet requred.  If the gdallocationinfo program is in your PATH at the command line then no further installation of GDAL components is required.  Otherwise follow the instructions below for your platform:
 
 #### Installing GDAL binaries on Linux
 
-The GDAL binaries can be installed using `apt-get` on Ubuntu:
+On Ubuntu systems the GDAL binaries can be installed using `apt-get`:
 
     apt-get install gdal-bin
 
-For Ubuntu 16.04LTS the version of GDAL installed in this way will be 1.11.3. This version is sufficient for running the **PaleoCAR browser**.
+For Ubuntu 16.04LTS the version of GDAL installed by `apt-get` will be 1.11.3. This version is sufficient for running the **PaleoCAR browser**.
 
 For other Linux distributions check for installer packages or [build from source](http://trac.osgeo.org/gdal/wiki/BuildHints).
 
@@ -48,7 +45,7 @@ Install either the [GDAL Complete](http://www.kyngchaos.com/software:frameworks#
 
 #### Installing GDAL on windows
 
-Install either a win32 or x64 package (for 32-bit and 64-bit Windows, respectively) provided by [GISInternals](http://www.gisinternals.com/release.php). Add the GDAL binaries directory (e.g. `C:\Program Files\GDAL`) to your `PATH` so that the `gdallocationinfo` command works at the terminal prompt.
+Install one of the `win32` or `x64` packages (for 32-bit and 64-bit Windows, respectively) provided by [GISInternals](http://www.gisinternals.com/release.php). Add the GDAL binaries directory (e.g. `C:\Program Files\GDAL`) to your `PATH` so that the `gdallocationinfo` command works at the terminal prompt.
 
 
 
