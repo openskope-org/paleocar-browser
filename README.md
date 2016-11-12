@@ -2,15 +2,15 @@ PaleoCAR Browser
 ================
 
 This repo represents an exploration of alternative technologies for implementing the SKOPE system.  It is a fork of [digital-antiquity/skope](https://github.com/digital-antiquity/skope) 
-which stores code for the SKOPE I prototype.  The current implementation of the **PaleoCAR browser** is designed to (1) make it easy for the browser-based frontend to employ different implementations of the backend services; and (2) enable anyone to use the **PaleoCAR browser** with different data sets without installing this data on the production server.
+which stores code for the SKOPE I prototype.  The current implementation of the **PaleoCAR Browser** is designed to (1) make it easy for the browser-based frontend to employ different implementations of the backend services; and (2) enable anyone to use the **PaleoCAR Browser** with different data sets without installing this data on the production server.
 
-Default backend services are included in the **PaleoCAR browser** application so that the entire prototpe can be run by executing a single JAR file. Although only a Java runtime is needed to execute the jar, GDAL binaries also must be installed on the same system if the built-in raster-data service is to be employed.
+Default backend services are included in the **PaleoCAR Browser** application so that the entire prototpe can be run by executing a single JAR file. Although only a Java runtime is needed to execute the jar, GDAL binaries also must be installed on the same system if the built-in raster-data service is to be employed.
 
-The remainder of this README describes how to run the PaleoCAR browser and how to configure it to use different backend services or datasets. A demonstration of the PaloeCAR browser can be found at [http://45.79.81.187:8000/](http://45.79.81.187:8000/).
+The remainder of this README describes how to run the PaleoCAR browser and how to configure it to use different backend services or datasets. A demonstration of the **PaloeCAR Browser** can be found at [http://45.79.81.187:8000/](http://45.79.81.187:8000/).
 
-Running the PaleoCAR backend
-----------------------------
-The PaleoCAR browser backend can be run from any computer with a Java Runtime Environment (JRE) version 1.8 or higher and an installation of GDAL. Because the application is implemented using [Spring Boot](http://projects.spring.io/spring-boot/) and packaged with an embedded Tomcat application server it is not necessary to install and configure Tomcat.
+Running the PaleoCAR Browser service
+------------------------------------
+The **PaleoCAR Browser** service can be run from any computer with a Java Runtime Environment (JRE) version 1.8 or higher and an installation of GDAL. Because the application is implemented using [Spring Boot](http://projects.spring.io/spring-boot/)and packaged with an embedded Tomcat application server, it is not necessary to install and configure Tomcat.
 
 ### Install a Java Runtime Environment (JRE)
 
@@ -26,7 +26,7 @@ A JRE may be downloaded from Oracle's [Java SE Downloads](http://www.oracle.com/
 
 ### Install GDAL 
 
-The `raster data service` included in the default packaging depends on a local installation of [GDAL](http://www.gdal.org/) (Geospation Data Abstraction Library).  Currently only the program [gdallocationinfo](http://www.gdal.org/gdallocationinfo.html) is needed.  Note that the Python bindings and scripts (which can be tricky to install on Windows) are not required.  If the `gdallocationinfo` program is in your PATH at the command line then no further GDAL components need be installed.  Otherwise follow the instructions below for your platform:
+The `Raster Data Service` included in the default packaging depends on a local installation of [GDAL](http://www.gdal.org/) (Geospation Data Abstraction Library).  Currently only the program [gdallocationinfo](http://www.gdal.org/gdallocationinfo.html) is needed.  Note that the Python bindings and scripts (which can be tricky to install on Windows) are not required.  If the `gdallocationinfo` program is in your PATH at the command line then no further GDAL components need be installed.  Otherwise follow the instructions below for your platform:
 
 #### Installing GDAL binaries on Linux
 
@@ -55,17 +55,17 @@ A pre-built jar file is included in each [release](https://github.com/openskope/
 
 ### Run the jar file
 
-The editor service now can be run using the `java -jar` command. For example:
+The **PaleoCAR Browser** service now can be run using the `java -jar` command. For example:
 
     $ java -jar paleocar-browser-0.1.0.jar
 
-The above command will start the PaleoCAR browser service on port 8000.  Open a web browser to http://localhost:8000 to launch the web-based user interface on the same computer as the service.
+The above command will start the **PaleoCAR Browser** service on port 8000.  Open a web browser to http://localhost:8000 to launch the web-based user interface on the same computer as the service.
 
 To run the service on a different port specify it using the `server-port` option.  For example:
 
     $ sudo java -jar paleocar-browser-0.1.0.jar --server.port=80
 
-This will start the service port 80. Note that the `sudo` command is required in macOS and Linux environments when using port 80.
+This will start the **PaleoCAR Browser** service on port 80. Note that the `sudo` command is required in macOS and Linux environments when using port 80.
 
 
 
