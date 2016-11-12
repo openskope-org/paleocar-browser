@@ -26,6 +26,7 @@ A JRE may be downloaded from Oracle's [Java SE Downloads](http://www.oracle.com/
 
 ### Install GDAL 
 
+The `raster data service` included in the default packaging depends on a local installation of [GDAL](http://www.gdal.org/) (Geospation Data Abstraction Library).  Currently only the program [gdallocationinfo](http://www.gdal.org/gdallocationinfo.html) is needed.  Note that the Python bindings (which can be tricky to install on Windows) are not yet required.  If the `gdallocationinfo` program is in your PATH at the command line then no further GDAL components need be installed.  Otherwise follow the instructions below for your platform:
 
 #### Installing GDAL binaries on Linux
 
