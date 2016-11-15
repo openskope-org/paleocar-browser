@@ -4,6 +4,7 @@ PaleoCAR Browser
 This repo represents an exploration of alternative technologies for implementing the SKOPE system.  It is a fork of [digital-antiquity/skope](https://github.com/digital-antiquity/skope) 
 which stores code for the SKOPE I prototype.  The current implementation of the **PaleoCAR Browser** is designed to (1) make it easy for the browser-based frontend to employ different implementations of the backend services; and (2) enable anyone to use the **PaleoCAR Browser** with different data sets without installing this data on the production server.
 
+Default backend services are included in the **PaleoCAR Browser** application so that the entire prototpe can be run by executing a single JAR file. Because the application can itself serve static map tiles a web server is not required (although one may be used for this purpose). GDAL binaries must be installed on the same system if the built-in raster-data service is to be employed.
 
 The remainder of this README describes how to run the PaleoCAR browser and how to configure it to use different backend services or datasets. A demonstration of the **PaloeCAR Browser** can be found at [http://45.79.81.187:8000/](http://45.79.81.187:8000/).
 
