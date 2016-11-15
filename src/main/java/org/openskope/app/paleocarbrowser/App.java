@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@ComponentScan(basePackages="org.openskope.app.paleocarbrowser,org.openskope.service.rasterdata")
+@ComponentScan(basePackages="org.openskope.app.paleocarbrowser,org.openskope.service.rasterdata,org.openskope.service.rastertile")
 public class App {
 
     public static void main(String[] args) {
