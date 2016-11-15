@@ -10,14 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StaticRasterTileService extends WebMvcConfigurerAdapter {
 
-    @Value("${rastertile-service.static-data-dir}")
-    private String rasterTileStaticDataDir;
+    @Value("${rastertile-service.tiles-root}")
+    private String staticRasterTilesDir;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-    	if (rasterTileStaticDataDir != null) {
-            registry.addResourceHandler("/**").addResourceLocations("file:" + rasterTileStaticDataDir);
+    	if (staticRasterTilesDir != null) {
+            registry.addResourceHandler("/tiles/**").addResourceLocations("file:" + staticRasterTilesDir);
         }
     }
 }
