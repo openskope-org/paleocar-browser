@@ -31,9 +31,6 @@ public class AppController implements InitializingBean {
 	@Value("${paleocar-browser.base}")  	public String paleocarBrowserBase;
 	@Value("${paleocar-browser.datasets}")	public String paleocarBrowserDatasets;
 
-	@Value("${rastertile-service.host}")	public String rasterTileServiceHost;
-	@Value("${rastertile-service.prefix}")	public String rasterTileServicePrefix;
-	@Value("${rastertile-service.version}") public String rasterTileServiceVersion;
 	@Value("${rastertile-service.base}")  	public String rasterTileServiceBase;
 
 	@Value("${rasterdata-service.host}")	public String rasterDataServiceHost;
@@ -46,8 +43,8 @@ public class AppController implements InitializingBean {
 	public void afterPropertiesSet() throws Exception {
 		paleocarBrowserBaseUrl = restUrl(paleocarBrowserHost, paleocarBrowserPrefix, 
                                          paleocarBrowserVersion, paleocarBrowserBase);
-		rasterTileServiceBaseUrl = restUrl(rasterTileServiceHost, rasterTileServicePrefix, 
-                                           rasterTileServiceVersion, rasterTileServiceBase);
+		rasterTileServiceBaseUrl = restUrl(null, null, 
+                                           null, rasterTileServiceBase);
 		rasterDataServiceBaseUrl = restUrl(rasterDataServiceHost, rasterDataServicePrefix,
                                            rasterDataServiceVersion, rasterDataServiceBase);
 		
