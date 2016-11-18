@@ -67,7 +67,7 @@ Note that the jar file itself does not contain the data served by the **PaleoCAR
 
 To run the service on a different port, specify it using the `server-port` option. For example,
 
-    $ sudo java -jar paleocar-browser-0.1.0.jar --server.port=80
+    $ sudo java -jar paleocar-browser-0.1.1.jar --server.port=80
 
 starts the **PaleoCAR Browser** service on port 80. The `sudo` command is required in macOS and Linux environments when using port 80.
 
@@ -91,7 +91,7 @@ Precomputed map display tiles for year 1 CE are stored in gzipped tar files:
 
 Download and expand these archives (for example into a directory named `tiles`).
 
-If you have insufficient disk space store them on a USB Flash drive and attach this drive when runbing the **PaleoCAR Browser** application.  The application runs well in this mode.
+If you have insufficient disk space you may store the data files on a USB Flash drive and attach this drive when running the **PaleoCAR Browser** application.  The application runs well in this mode.
 
 ### Specify the location of data when starting the PaleoCAR Browser
 
@@ -99,14 +99,14 @@ When serving data downloaded as described above and stored on your computer, spe
 
 Option                       | Description | Default Value
 -----------------------------|-------------|--------------
-rasterdata-service.data-dir  | Local directory containing the four GeoTIFF data files           | `./data`
+rasterdata-service.data-dir  | Local directory containing the four GeoTIFF data files         | `./data`
 rastertile-service.tiles-dir | Local directory where the map tile archives have been expanded | `./tiles`
 
-Note that by default the data files and map tiles are assumed to be stored in directories named `data` and `tiles`, respectively, in the current working directory.
+Note that by default the data files and map tiles are assumed to be stored in subdirectories named `data` and `tiles`, respectively, of the current working directory.
 
-Fo example, to run the **PaleoCAR Browser** application port 8000 on a Windows computer where the data files are stored on a USB thumb drive mounted drive letter `E`:
+Fo example, to run the **PaleoCAR Browser** application port 8000 on a Windows computer where the data files are stored on a USB flash drive mounted on drive letter `E`:
 
-    $ java -jar paleocar-browser-0.1.1-SNAPSHOT.jar           \
+    $ java -jar paleocar-browser-0.1.1.jar                    \
                 --rasterdata-service.data-dir=E:/SKOPE/data   \
                 --rastertile-service.tiles-dir=E:/SKOPE/tiles
 
@@ -116,7 +116,7 @@ Due to the default values for the two command line options, the above is equival
 
 The archives of map tiles available for download cover the year 1 CE only.  Map tiles for the full 2000 years of the PaloeCAR reconstruction currently are publicly accessible at http://demo.envirecon.org/browse/img.  To instruct the **PaleoCAR Browser** to display map tiles available from this map tile server use the `--rastertile-service.base` option. For example,
 
-    $ java -jar paleocar-browser-0.1.1-SNAPSHOT.jar                                 \             
+    $ java -jar paleocar-browser-0.1.1.jar                                      \             
                 --rastertile-service.base=http://demo.envirecon.org/browse/img
 
 All 2000 years of map tiles will then be accessible through the browser interface.
