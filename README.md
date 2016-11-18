@@ -114,7 +114,7 @@ Due to the default values for the two command line options, the above is equival
 
 ### Use a remote tile server instead of locally stored map tiles
 
-The archives of map tiles available for download cover the year 1 CE only.  Map tiles for the full 2000 years of the PaloeCAR reconstruction currently are publicly accessible at http://demo.envirecon.org/browse/img.  To instruct the **PaleoCAR Browser** to display map tiles available from this map tile server use the `--rastertile-service.base` option. For example,
+The archives of map tiles available for download cover the year 1 CE only.  Map tiles for the full 2000 years of the PaleoCAR reconstruction currently are publicly accessible at http://demo.envirecon.org/browse/img.  To instruct the **PaleoCAR Browser** to display map tiles available from this map tile server use the `--rastertile-service.base` option. For example,
 
     $ java -jar paleocar-browser-0.1.1.jar                                      \             
                 --rastertile-service.base=http://demo.envirecon.org/browse/img
