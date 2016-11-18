@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("${paleocar-browser-config.base}")
 public class WebAppConfigController implements InitializingBean {
 
-	private Object dataSets;
+	private Object configData;
 
-	@Value("${paleocar-browser-config.data}")	public String dataSetDeclarationFile;
+	@Value("${paleocar-browser-config.data}")	public String paleocarBrowserConfigData;
 	@Value("${paleocar-browser-config.base}")  	public String paleocarBrowserConfigBase;
 	@Value("${rastertile-service.base}")  		public String rasterTileServiceBase;
 	@Value("${rasterdata-service.base}")  		public String rasterDataServiceBase;
 
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
-		InputStream dataSetDeclarationYamlStream = 
-			WebAppConfigController.class.getClassLoader().getResourceAsStream(dataSetDeclarationFile);
-		dataSets = new Yaml().load(dataSetDeclarationYamlStream);  
+		InputStream paleocarBrowserConfigDataStream = 
+			WebAppConfigController.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigData);
+		configData = new Yaml().load(paleocarBrowserConfigDataStream);
     }
 
 	@RequestMapping(value="config", method=RequestMethod.GET)
@@ -38,7 +38,7 @@ public class WebAppConfigController implements InitializingBean {
 			paleocarBrowserConfigBase,
 			rasterTileServiceBase,
             rasterDataServiceBase,
-            dataSets
+            configData
 		);
 	}
 }
