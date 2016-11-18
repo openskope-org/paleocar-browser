@@ -1,18 +1,18 @@
-package org.openskope.app.paleocarbrowser;
+package org.openskope.webapp.paleocarbrowser;
 
 
 import java.util.Map;
 
 import org.openskope.util.Uri;
 
-public class AppConfigResponse {
+public class WebAppConfigResponse {
     
     private String paleocarBrowserBaseUrl;
 	private String rasterTileServiceBaseUrl;
 	private String rasterDataServiceBaseUrl;
 	private Object dataSets;
 
-    public AppConfigResponse(
+    public WebAppConfigResponse(
         String paleocarBrowserBaseUrl, 
         String rasterTileServiceBaseUrl,
 	    String rasterDataServiceBaseUrl,

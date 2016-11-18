@@ -1,4 +1,4 @@
-package org.openskope.app.paleocarbrowser;
+package org.openskope.webapp.paleocarbrowser;
 
 import java.io.InputStream;
 
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController 
 @EnableAutoConfiguration 
 @RequestMapping("${paleocar-browser-config.base}")
-public class AppController implements InitializingBean {
+public class WebAppConfigController implements InitializingBean {
 
 	private Object dataSets;
 
@@ -28,13 +28,13 @@ public class AppController implements InitializingBean {
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
 		InputStream dataSetDeclarationYamlStream = 
-			AppController.class.getClassLoader().getResourceAsStream(dataSetDeclarationFile);
+			WebAppConfigController.class.getClassLoader().getResourceAsStream(dataSetDeclarationFile);
 		dataSets = new Yaml().load(dataSetDeclarationYamlStream);  
     }
 
 	@RequestMapping(value="config", method=RequestMethod.GET)
-	public AppConfigResponse getConfiguration() {
-		return new AppConfigResponse(
+	public WebAppConfigResponse getConfiguration() {
+		return new WebAppConfigResponse(
 			paleocarBrowserConfigBase,
 			rasterTileServiceBase,
             rasterDataServiceBase,
