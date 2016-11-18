@@ -301,7 +301,7 @@
             }
             
             // build the tile URL path + filename + year + color + leaflet params
-            var currentTileLayer_ = L.tileLayer(config.rasterTileServiceBaseUrl + '/{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
+            var currentTileLayer_ = L.tileLayer(config.rasterTileServiceBaseUrl + '{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
                 tms : true,
                 tile : _getActiveSelection(),
                 time : 1 + _getTime(),
@@ -316,9 +316,7 @@
             });
         }
 
-
         var charts = [];
-
 
         // handle the click ona  location, render the graphs and setup the download link
         function _getDetail(location) {

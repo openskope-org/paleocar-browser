@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController 
 @EnableAutoConfiguration 
 @CrossOrigin 
-@RequestMapping("/${rasterdata-service.prefix}/api/${rasterdata-service.version}/")
+@RequestMapping("${rasterdata-service.base}/")
 public class RasterDataServiceController {
     
     private final static String files[];
@@ -43,7 +43,7 @@ public class RasterDataServiceController {
 
 	@Value("${rasterdata-service.data-dir}") public String dataDirectory;
 
-	@RequestMapping(value="timeseries", method=RequestMethod.GET)
+	@RequestMapping(value="/timeseries", method=RequestMethod.GET)
     @ResponseBody
 	public TimeseriesResponse getTimeSeries(
             @RequestParam(value="long", required=true) String longitude,
@@ -63,7 +63,7 @@ public class RasterDataServiceController {
 		return response;
 	}
 
-	@RequestMapping(value="timeseries-download", method=RequestMethod.GET)
+	@RequestMapping(value="/timeseries-download", method=RequestMethod.GET)
 	public void getTimeSeriesDownload(
             HttpServletResponse response,
             @RequestParam(value="long", required=true) String longitude,

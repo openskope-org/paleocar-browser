@@ -1,6 +1,9 @@
 package org.openskope.app.paleocarbrowser;
 
+
 import java.util.Map;
+
+import org.openskope.util.Uri;
 
 public class AppConfigResponse {
     
@@ -15,9 +18,9 @@ public class AppConfigResponse {
 	    String rasterDataServiceBaseUrl,
 	    Object dataSets
     ) {
-        this.paleocarBrowserBaseUrl = paleocarBrowserBaseUrl;
-	    this.rasterTileServiceBaseUrl = rasterTileServiceBaseUrl;
-	    this.rasterDataServiceBaseUrl = rasterDataServiceBaseUrl;
+        this.paleocarBrowserBaseUrl = Uri.ensureTerminalSlash(paleocarBrowserBaseUrl);
+	    this.rasterTileServiceBaseUrl = Uri.ensureTerminalSlash(rasterTileServiceBaseUrl);
+	    this.rasterDataServiceBaseUrl = Uri.ensureTerminalSlash(rasterDataServiceBaseUrl);
 	    this.dataSets = dataSets;
     }
 
