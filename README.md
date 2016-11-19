@@ -6,7 +6,7 @@ which stores code for the SKOPE I prototype.  The current implementation of the 
 
 Default backend services are included in the **PaleoCAR Browser** application so that the entire prototpe can be run by executing a single JAR file. Because the application can itself serve static map tiles a web server is not required (although one may be used for this purpose). GDAL binaries must be installed on the same system if the built-in raster-data service is to be employed.
 
-The remainder of this README describes how to run the **PaleoCAR Browser** and how to configure it to use different backend services or datasets. A demonstration of the **PaloeCAR Browser** can be found at [http://www.xkope.org:8000](http://www.xkope.org:8000/).
+The remainder of this README describes how to run the **PaleoCAR Browser** and how to configure it to use different backend services or datasets. A demonstration of the **PaloeCAR Browser** can be found at [xkope.org:8000](http://www.xkope.org:8000/).
 
 Running the PaleoCAR Browser service
 ------------------------------------
@@ -73,7 +73,7 @@ starts the **PaleoCAR Browser** service on port 80. The `sudo` command is requir
 
 ### Download the data files served by PaleoCAR browser
 
-The minimal data for running the **PaleoCAR Browser** may be downloaded from [http://www.xkope.org/data/data/](http://www.xkope.org/data/).
+The minimal data for running the **PaleoCAR Browser** may be downloaded from [xkope.org/data](http://www.xkope.org/data/).
 
 The retrodicted environmental condition coverages are stored in four GeoTIFF files, each ~9GB in size:
     
