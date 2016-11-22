@@ -1,9 +1,6 @@
 package org.openskope.webapp.paleocarbrowser;
 
-
-import java.util.Map;
-
-import org.openskope.util.Uri;
+import org.yesworkflow.util.uri.UriBase;
 
 public class WebAppConfigResponse {
     
@@ -18,9 +15,9 @@ public class WebAppConfigResponse {
 	    String rasterDataServiceBaseUrl,
 	    Object dataSets
     ) {
-        this.paleocarBrowserBaseUrl = Uri.ensureTerminalSlash(paleocarBrowserBaseUrl);
-	    this.rasterTileServiceBaseUrl = Uri.ensureTerminalSlash(rasterTileServiceBaseUrl);
-	    this.rasterDataServiceBaseUrl = Uri.ensureTerminalSlash(rasterDataServiceBaseUrl);
+        this.paleocarBrowserBaseUrl = UriBase.ensureTerminalSlash(paleocarBrowserBaseUrl);
+	    this.rasterTileServiceBaseUrl = UriBase.ensureTerminalSlash(rasterTileServiceBaseUrl);
+	    this.rasterDataServiceBaseUrl = UriBase.ensureTerminalSlash(rasterDataServiceBaseUrl);
 	    this.dataSets = dataSets;
     }
 

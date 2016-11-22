@@ -28,6 +28,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-remote-shell</artifactId>
+        </dependency>
+
+        <dependency>
            <groupId>org.yaml</groupId>
            <artifactId>snakeyaml</artifactId>
            <version>1.13</version>
@@ -36,6 +41,12 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yesworkflow</groupId>
+            <artifactId>yw-utilities</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
