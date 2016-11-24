@@ -1,5 +1,6 @@
 package org.openskope.service.rasterdata;
 
+import java.io.File;
 import java.io.Writer;
 import java.util.Map;
 import java.util.HashMap;
@@ -16,13 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.InitializingBean;
 
 
 @RestController 
 @EnableAutoConfiguration 
 @CrossOrigin 
 @RequestMapping("${rasterdata-service.base}/")
-public class RasterDataServiceController {
+public class RasterDataServiceController implements InitializingBean {
     
     private final static String files[];
     
@@ -35,7 +37,12 @@ public class RasterDataServiceController {
         };
     };
 
-	@Value("${rasterdata-service.data-dir}") public String dataDirectory;
+	@Value("${rasterdata-service.data-dir}") public String rasterDataDirectory;
+    private String dataDirectory;
+
+    public void afterPropertiesSet() {
+        dataDirectory = (new File(rasterDataDirectory)).getAbsolutePath();
+    }
 
 	@RequestMapping(value="/timeseries", method=RequestMethod.GET)
     @ResponseBody

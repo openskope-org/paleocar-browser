@@ -1,5 +1,7 @@
 package org.openskope.service.rastertile;
 
+import java.io.File;
+
 import org.yesworkflow.util.uri.UriBase;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +23,7 @@ public class StaticRasterTileService extends WebMvcConfigurerAdapter {
     	if (rasterTilesDir != null) {
 
             System.out.println("***** rasterTilesDir: " + rasterTilesDir + " *****");
-            String resourceLocation =  UriBase.ensureTerminalSlash(rasterTilesDir);
+            String resourceLocation = (new File(rasterTilesDir)).toURI().toString();
             System.out.println("***** Tiles resource location: " + resourceLocation + " *****");
 
             registry.addResourceHandler(rasterTileServiceBase + "/**")
