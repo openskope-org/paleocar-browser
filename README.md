@@ -97,20 +97,20 @@ If you have insufficient disk space you may store the data files on a USB Flash 
 
 When serving data downloaded as described above and stored on your computer, specify the location of the data files and tiles using the options below:
 
-Option                       | Description | Default Value
------------------------------|-------------|--------------
-rasterdata-service.data-dir  | Local directory containing the four GeoTIFF data files         | `./data`
-rastertile-service.tiles-dir | Local directory where the map tile archives have been expanded | `./tiles`
+Option                       | Description                                                    | Default Value
+-----------------------------|----------------------------------------------------------------|--------------
+rasterdata-service.data-dir  | Local directory containing the four GeoTIFF data files         | `.`
+rastertile-service.tiles-dir | Local directory where the map tile archives have been expanded | `.`
 
-Note that by default the data files and map tiles are assumed to be stored in subdirectories named `data` and `tiles`, respectively, of the current working directory.
+Note that by default the data files and the roots of the tile directory hierarchies are assumed to be located in the current working directory.
 
-Fo example, to run the **PaleoCAR Browser** application port 8000 on a Windows computer where the data files are stored on a USB flash drive mounted on drive letter `E`:
+For example, to run the **PaleoCAR Browser** application port 8000 on a Windows computer where the data files are stored on a USB flash drive mounted on drive letter `E`:
 
-    $ java -jar paleocar-browser-0.1.1.jar                    \
-                --rasterdata-service.data-dir=E:/SKOPE/data   \
-                --rastertile-service.tiles-dir=E:/SKOPE/tiles
+    $ java -jar paleocar-browser-0.1.1.jar                  \
+                --rasterdata-service.data-dir='E:/SKOPE/'   \
+                --rastertile-service.tiles-dir='E:/SKOPE/'  \
 
-Due to the default values for the two command line options, the above is equivalent to changing directory to `E:/SKOPE` and running the jar file without any options at all.
+Due to the default values for the two command line options, the above is equivalent to changing directory to `E:/SKOPE` and executing the jar file without any options at all.
 
 ### Use a remote tile server instead of locally stored map tiles
 
