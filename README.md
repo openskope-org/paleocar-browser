@@ -78,7 +78,7 @@ The minimal data for running the **PaleoCAR Browser** may be downloaded from [xk
 The retrodicted environmental condition coverages are stored in four GeoTIFF files, each ~9GB in size:
     
 * [GDD_may_sept_demosaic.tif](http://xkope.org:8000/GDD_may_sept_demosaic.tif)
-* [PPT_annual_demosaic.tif](xkope.org:8000/PPT_annual_demosaic.tif)
+* [PPT_annual_demosaic.tif](http://xkope.org:8000/PPT_annual_demosaic.tif)
 * [PPT_may_sept_demosaic.tif](http://xkope.org:8000/PPT_may_sept_demosaic.tif)
 * [PPT_water_year.tif](http://xkope.org:8000/PPT_water_year.tif)
 
