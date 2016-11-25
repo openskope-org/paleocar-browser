@@ -6,7 +6,7 @@ which stores code for the SKOPE I prototype.  The current implementation of the 
 
 Default backend services are included in the **PaleoCAR Browser** application so that the entire prototpe can be run by executing a single JAR file. Because the application can itself serve static map tiles a web server is not required (although one may be used for this purpose). GDAL binaries must be installed on the same system if the built-in raster-data service is to be employed.
 
-The remainder of this README describes how to run the **PaleoCAR Browser** and how to configure it to use different backend services or datasets. A demonstration of the **PaloeCAR Browser** can be found at [xkope.org:8000](http://www.xkope.org:8000/).
+The remainder of this README describes how to run the **PaleoCAR Browser** and how to configure it to use different backend services or datasets. A demonstration of the **PaloeCAR Browser** can be found at [xkope.org](http://www.xkope.org/).
 
 Running the PaleoCAR Browser service
 ------------------------------------
@@ -51,13 +51,13 @@ Install one of the `win32` or `x64` packages (for 32-bit and 64-bit Windows, res
 
 ### Download the Jar file for the latest release
 
-A pre-built jar file is included in each [release](https://github.com/openskope/paleocar-browser/releases) of the **PaleoCAR browser** package.  Download the jar file to your system.  The release jar file corresponding to this version of the README is named `paleocar-browser-0.1.1.jar`.
+A pre-built jar file is included in each [release](https://github.com/openskope/paleocar-browser/releases) of the **PaleoCAR browser** package.  Download the jar file to your system.  The release jar file corresponding to this version of the README is named `paleocar-browser-0.1.2.jar`.
 
 ### Run the jar file
 
 The **PaleoCAR Browser** service now can be run using the `java -jar` command. For example:
 
-    $ java -jar paleocar-browser-0.1.1.jar
+    $ java -jar paleocar-browser-0.1.2.jar
 
 The above command will start the **PaleoCAR Browser** service on port 8000.  Open a web browser to http://localhost:8000 to launch the web-based user interface on the same computer as the service.
 
@@ -67,31 +67,29 @@ Note that the jar file itself does not contain the data served by the **PaleoCAR
 
 To run the service on a different port, specify it using the `server-port` option. For example,
 
-    $ sudo java -jar paleocar-browser-0.1.1.jar --server.port=80
+    $ sudo java -jar paleocar-browser-0.1.2.jar --server.port=80
 
 starts the **PaleoCAR Browser** service on port 80. The `sudo` command is required in macOS and Linux environments when using port 80.
 
 ### Download the data files served by PaleoCAR browser
 
-The minimal data for running the **PaleoCAR Browser** may be downloaded from [xkope.org/data](http://www.xkope.org/data/).
+The minimal data for running the **PaleoCAR Browser** may be downloaded from [xkope.org:8000](http://xkope.org:8000).
 
 The retrodicted environmental condition coverages are stored in four GeoTIFF files, each ~9GB in size:
     
-* [GDD_may_sept_demosaic.tif](http://45.79.81.187/data/GDD_may_sept_demosaic.tif)
-* [PPT_annual_demosaic.tif](http://45.79.81.187/data/PPT_annual_demosaic.tif)
-* [PPT_may_sept_demosaic.tif](http://45.79.81.187/data/PPT_may_sept_demosaic.tif)
-* [PPT_water_year.tif](http://45.79.81.187/data/PPT_water_year.tif)
+* [GDD_may_sept_demosaic.tif](http://xkope.org:8000/GDD_may_sept_demosaic.tif)
+* [PPT_annual_demosaic.tif](xkope.org:8000/PPT_annual_demosaic.tif)
+* [PPT_may_sept_demosaic.tif](http://xkope.org:8000/PPT_may_sept_demosaic.tif)
+* [PPT_water_year.tif](http://xkope.org:8000/PPT_water_year.tif)
 
 Download the GeoTIFF  files and store them in a single directory (named `data` for example) on your computer.   These converages span all 2000 years of the PaleoCAR reconstructions. 
 
 Precomputed map display tiles for year 1 CE are stored in gzipped tar files:
 
-* [GDD_may_sept_demosaic_tiles-1.tar.gz](http://45.79.81.187/data/GDD_may_sept_demosaic_tiles-1.tar.gz)
-* [PPT_water_year_tiles-1.tar.gz](http://45.79.81.187/data/PPT_water_year_tiles-1.tar.gz)
+* [GDD_may_sept_demosaic_tiles-1.tar.gz](http://xkope.org:8000/GDD_may_sept_demosaic_tiles-1.tar.gz)
+* [PPT_water_year_tiles-1.tar.gz](http://xkope.org:8000/PPT_water_year_tiles-1.tar.gz)
 
-Download and expand these archives (for example into a directory named `tiles`).
-
-If you have insufficient disk space you may store the data files on a USB Flash drive and attach this drive when running the **PaleoCAR Browser** application.  The application runs well in this mode.
+Download and expand these archive. If you have insufficient disk space you may store the data files on a USB Flash drive and attach this drive when running the **PaleoCAR Browser** application.  The application runs well in this mode.
 
 ### Specify the location of data when starting the PaleoCAR Browser
 
