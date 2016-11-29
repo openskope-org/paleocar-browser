@@ -23,7 +23,7 @@ import org.springframework.beans.factory.InitializingBean;
 @RestController 
 @EnableAutoConfiguration 
 @CrossOrigin 
-@RequestMapping("${rasterdata-service.base}/")
+@RequestMapping("${raster-data-service.url}/")
 public class RasterDataServiceController implements InitializingBean {
     
     private final static String files[];
@@ -37,7 +37,7 @@ public class RasterDataServiceController implements InitializingBean {
         };
     };
 
-	@Value("${rasterdata-service.data-dir}") public String rasterDataDirectory;
+	@Value("${raster-data-service.data-dir}") public String rasterDataDirectory;
     private String dataDirectory;
 
     public void afterPropertiesSet() {
@@ -77,6 +77,8 @@ public class RasterDataServiceController implements InitializingBean {
         response.setContentType("text/csv");
         response.setHeader("Content-Disposition", 
                             String.format("attachment; filename=\"%s\"", csvFileName));
+
+        //TODO: Try using @ResponseBody on method and return string containing CSV content
         Writer writer = response.getWriter();
         writer.write("Year, GDD_may_sept_demosaic.tif, PPT_annual_demosaic.tif, PPT_may_sept_demosaic.tif, PPT_water_year.tif\n");
 

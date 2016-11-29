@@ -15,29 +15,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController 
 @EnableAutoConfiguration 
-@RequestMapping("${paleocar-browser-config.base}")
+@RequestMapping("${paleocar-browser-config.url}")
 public class WebAppConfigController implements InitializingBean {
 
 	private Object configData;
 
-	@Value("${paleocar-browser-config.data}")	public String paleocarBrowserConfigData;
-	@Value("${paleocar-browser-config.base}")  	public String paleocarBrowserConfigBase;
-	@Value("${rastertile-service.base}")  		public String rasterTileServiceBase;
-	@Value("${rasterdata-service.base}")  		public String rasterDataServiceBase;
+	@Value("${paleocar-browser-config.data-file}")	public String paleocarBrowserConfigDataFile;
+	@Value("${paleocar-browser-config.url}")  		public String paleocarBrowserConfigUrl;
+	@Value("${raster-tile-service.url}")  			public String rasterTileServiceUrl;
+	@Value("${raster-data-service.url}")  			public String rasterDataServiceUrl;
 
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
 		InputStream paleocarBrowserConfigDataStream = 
-			WebAppConfigController.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigData);
+			WebAppConfigController.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigDataFile);
 		configData = new Yaml().load(paleocarBrowserConfigDataStream);
     }
 
 	@RequestMapping(value="config", method=RequestMethod.GET)
 	public WebAppConfigResponse getConfiguration() {
 		return new WebAppConfigResponse(
-			paleocarBrowserConfigBase,
-			rasterTileServiceBase,
-            rasterDataServiceBase,
+			paleocarBrowserConfigUrl,
+			rasterTileServiceUrl,
+            rasterDataServiceUrl,
             configData
 		);
 	}

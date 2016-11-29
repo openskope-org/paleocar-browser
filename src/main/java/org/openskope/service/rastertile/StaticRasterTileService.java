@@ -12,11 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class StaticRasterTileService extends WebMvcConfigurerAdapter {
 
-    @Value("${rastertile-service.tiles-dir}")
+    @Value("${raster-tile-service.tiles-dir}")
     private String rasterTilesDir;
 
-    @Value("${rastertile-service.base}")
-    private String rasterTileServiceBase;
+    @Value("${raster-tile-service.url}")
+    private String rasterTileServiceUrl;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -26,7 +26,7 @@ public class StaticRasterTileService extends WebMvcConfigurerAdapter {
             String resourceLocation = (new File(rasterTilesDir)).toURI().toString();
             System.out.println("***** Tiles resource location: " + resourceLocation + " *****");
 
-            registry.addResourceHandler(rasterTileServiceBase + "/**")
+            registry.addResourceHandler(rasterTileServiceUrl + "/**")
                     .addResourceLocations(resourceLocation);
         }
     }

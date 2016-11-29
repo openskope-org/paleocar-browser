@@ -4,33 +4,33 @@ import org.yesworkflow.util.uri.UriBase;
 
 public class WebAppConfigResponse {
     
-    private String paleocarBrowserBaseUrl;
-	private String rasterTileServiceBaseUrl;
-	private String rasterDataServiceBaseUrl;
+    private String paleocarBrowserUrl;
+	private String rasterTileServiceUrl;
+	private String rasterDataServiceUrl;
 	private Object dataSets;
 
     public WebAppConfigResponse(
-        String paleocarBrowserBaseUrl, 
-        String rasterTileServiceBaseUrl,
-	    String rasterDataServiceBaseUrl,
+        String paleocarBrowserUrl, 
+        String rasterTileServiceUrl,
+	    String rasterDataServiceUrl,
 	    Object dataSets
     ) {
-        this.paleocarBrowserBaseUrl = UriBase.ensureTerminalSlash(paleocarBrowserBaseUrl);
-	    this.rasterTileServiceBaseUrl = UriBase.ensureTerminalSlash(rasterTileServiceBaseUrl);
-	    this.rasterDataServiceBaseUrl = UriBase.ensureTerminalSlash(rasterDataServiceBaseUrl);
+        this.paleocarBrowserUrl = UriBase.ensureTerminalSlash(paleocarBrowserUrl);
+	    this.rasterTileServiceUrl = UriBase.ensureTerminalSlash(rasterTileServiceUrl);
+	    this.rasterDataServiceUrl = UriBase.ensureTerminalSlash(rasterDataServiceUrl);
 	    this.dataSets = dataSets;
     }
 
-    public String getPaleocarBrowserBaseUrl() {
-        return this.paleocarBrowserBaseUrl;
+    public String getPaleocarBrowserUrl() {
+        return this.paleocarBrowserUrl;
     }
 
-    public String getRasterTileServiceBaseUrl() {
-        return this.rasterTileServiceBaseUrl;
+    public String getRasterTileServiceUrl() {
+        return this.rasterTileServiceUrl;
     }
 
-    public String getRasterDataServiceBaseUrl() {
-        return this.rasterDataServiceBaseUrl;
+    public String getRasterDataServiceUrl() {
+        return this.rasterDataServiceUrl;
     }
     
     public Object getDataSets() {
