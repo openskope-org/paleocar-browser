@@ -19,7 +19,7 @@ import java.util.Arrays;
 @SpringBootApplication
 @ComponentScan(basePackages="org.openskope.component," 				+
                             "org.openskope.paleocarbrowser,"        +
-                            "org.openskope.rest.rasterdata,"        +
+                            "org.openskope.rasterdataservice,"      +
                             "org.openskope.rest.rastertile"         )
 public class PaleocarBrowser {
 

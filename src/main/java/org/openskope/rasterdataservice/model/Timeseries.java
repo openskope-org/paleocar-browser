@@ -1,13 +1,13 @@
-package org.openskope.rest.rasterdata;
+package org.openskope.rasterdataservice.model;
 
 import java.util.Map;
 import java.util.HashMap;
 
-public class TimeseriesResponse {
+public class Timeseries {
     
     private Map<String, String[]> yearlyValues;
 
-	public TimeseriesResponse() {
+	public Timeseries() {
         yearlyValues = new HashMap<String,String[]>();
     }
 

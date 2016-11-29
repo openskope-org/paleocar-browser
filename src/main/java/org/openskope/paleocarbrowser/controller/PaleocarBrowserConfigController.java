@@ -1,6 +1,7 @@
 package org.openskope.paleocarbrowser.controller;
 
 import org.openskope.paleocarbrowser.model.PaleocarBrowserConfig;
+import org.openskope.paleocarbrowser.service.PaleocarBrowserConfigService;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;

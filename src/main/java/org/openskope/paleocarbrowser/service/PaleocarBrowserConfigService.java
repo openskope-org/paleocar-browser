@@ -1,4 +1,4 @@
-package org.openskope.paleocarbrowser.controller;
+package org.openskope.paleocarbrowser.service;
 
 import org.openskope.paleocarbrowser.model.PaleocarBrowserConfig;
 
