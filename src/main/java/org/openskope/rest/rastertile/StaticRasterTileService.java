@@ -1,4 +1,4 @@
-package org.openskope.service.rastertile;
+package org.openskope.rest.rastertile;
 
 import java.io.File;
 

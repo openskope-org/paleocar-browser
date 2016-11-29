@@ -1,4 +1,4 @@
-package org.openskope.webapp.paleocarbrowser;
+package org.openskope.paleocarbrowser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,10 +18,10 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @ComponentScan(basePackages="org.openskope.component," 				+
-                            "org.openskope.webapp.paleocarbrowser," +
-                            "org.openskope.service.rasterdata,"     +
-                            "org.openskope.service.rastertile"      )
-public class PaleocarBrowserWebApp {
+                            "org.openskope.paleocarbrowser,"        +
+                            "org.openskope.rest.rasterdata,"        +
+                            "org.openskope.rest.rastertile"         )
+public class PaleocarBrowser {
 
     public static VersionInfo versionInfo;
 
@@ -52,8 +52,8 @@ public class PaleocarBrowserWebApp {
     public static ExitCode startServiceForArgs(String [] args, 
         PrintStream outStream, PrintStream errStream) throws Exception{
 
-        PaleocarBrowserWebApp.outStream = outStream;
-        PaleocarBrowserWebApp.errStream = errStream;
+        PaleocarBrowser.outStream = outStream;
+        PaleocarBrowser.errStream = errStream;
 
         versionInfo = VersionInfo.loadVersionInfoFromResource(
             "PaleoCAR Browser", 
@@ -92,7 +92,7 @@ public class PaleocarBrowserWebApp {
                 return ExitCode.SUCCESS;
             }
 
-        SpringApplication.run(PaleocarBrowserWebApp.class, args);
+        SpringApplication.run(PaleocarBrowser.class, args);
         
         } catch (CliUsageException e) {
 //            printToolUsageErrors(e.getMessage());

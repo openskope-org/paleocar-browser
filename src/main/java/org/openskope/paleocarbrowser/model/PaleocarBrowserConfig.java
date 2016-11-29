@@ -1,15 +1,15 @@
-package org.openskope.webapp.paleocarbrowser;
+package org.openskope.paleocarbrowser.model;
 
 import org.yesworkflow.util.uri.UriBase;
 
-public class WebAppConfigResponse {
+public class PaleocarBrowserConfig {
     
     private String paleocarBrowserUrl;
 	private String rasterTileServiceUrl;
 	private String rasterDataServiceUrl;
 	private Object dataSets;
 
-    public WebAppConfigResponse(
+    public PaleocarBrowserConfig(
         String paleocarBrowserUrl, 
         String rasterTileServiceUrl,
 	    String rasterDataServiceUrl,

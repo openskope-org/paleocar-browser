@@ -1,4 +1,4 @@
-package org.openskope.service.rasterdata;
+package org.openskope.rest.rasterdata;
 
 import java.util.Map;
 import java.util.HashMap;

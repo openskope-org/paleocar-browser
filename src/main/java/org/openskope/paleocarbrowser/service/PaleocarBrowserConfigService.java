@@ -1,22 +1,17 @@
-package org.openskope.webapp.paleocarbrowser;
+package org.openskope.paleocarbrowser.controller;
+
+import org.openskope.paleocarbrowser.model.PaleocarBrowserConfig;
 
 import java.io.InputStream;
 
 import org.yaml.snakeyaml.Yaml;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController 
-@EnableAutoConfiguration 
-@RequestMapping("${paleocar-browser-config.url}")
-public class WebAppConfigController implements InitializingBean {
+@Service
+public class PaleocarBrowserConfigService implements InitializingBean {
 
 	private Object configData;
 
@@ -28,13 +23,12 @@ public class WebAppConfigController implements InitializingBean {
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
 		InputStream paleocarBrowserConfigDataStream = 
-			WebAppConfigController.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigDataFile);
+			PaleocarBrowserConfigService.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigDataFile);
 		configData = new Yaml().load(paleocarBrowserConfigDataStream);
     }
 
-	@RequestMapping(value="config", method=RequestMethod.GET)
-	public WebAppConfigResponse getConfiguration() {
-		return new WebAppConfigResponse(
+	public PaleocarBrowserConfig getConfig() {
+		return new PaleocarBrowserConfig(
 			paleocarBrowserConfigUrl,
 			rasterTileServiceUrl,
             rasterDataServiceUrl,
