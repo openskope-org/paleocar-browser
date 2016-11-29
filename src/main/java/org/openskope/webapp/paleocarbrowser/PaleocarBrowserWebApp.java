@@ -3,9 +3,12 @@ package org.openskope.webapp.paleocarbrowser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.ApplicationArguments;
 
 import org.yesworkflow.util.cli.VersionInfo;
 
+import joptsimple.BuiltinHelpFormatter;
 import joptsimple.OptionException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -15,7 +18,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @ComponentScan(basePackages="org.openskope.component," 				+
-							"org.openskope.webapp.paleocarbrowser," +
+                            "org.openskope.webapp.paleocarbrowser," +
                             "org.openskope.service.rasterdata,"     +
                             "org.openskope.service.rastertile"      )
 public class PaleocarBrowserWebApp {
@@ -29,12 +32,6 @@ public class PaleocarBrowserWebApp {
     public static void main(String[] args) {
 
         ExitCode exitCode;
-
-        versionInfo = VersionInfo.loadVersionInfoFromResource(
-                "PaleoCAR Browser", 
-                "https://github.com/openskope/paleocar-browser.git",
-                "git.properties",
-                "maven.properties");
         
         try {
             exitCode = startServiceForArgs(args);
@@ -43,7 +40,9 @@ public class PaleocarBrowserWebApp {
             exitCode = ExitCode.UNCAUGHT_ERROR;
         }
 
-//        System.exit(exitCode.value());
+        if (exitCode != ExitCode.SUCCESS) {
+            System.exit(exitCode.value());
+        }
     }
 
     public static ExitCode startServiceForArgs(String [] args) throws Exception {
@@ -55,6 +54,12 @@ public class PaleocarBrowserWebApp {
 
         PaleocarBrowserWebApp.outStream = outStream;
         PaleocarBrowserWebApp.errStream = errStream;
+
+        versionInfo = VersionInfo.loadVersionInfoFromResource(
+            "PaleoCAR Browser", 
+            "https://github.com/openskope/paleocar-browser.git",
+            "git.properties",
+            "maven.properties");        
 
         try {
 
@@ -78,12 +83,12 @@ public class PaleocarBrowserWebApp {
             // print help and exit if requested
             if (options.has("h")) {
                 errStream.print(versionInfo.versionBanner());
-                // errStream.println(YW_CLI_USAGE_HELP);
-                // errStream.println(YW_CLI_COMMAND_HELP);
-                // parser.printHelpOn(errStream);
+                // errStream.println(CLI_USAGE_HELP);
+                // errStream.println(CLI_COMMAND_HELP);
+                parser.printHelpOn(errStream);
                 // errStream.println();
-                // errStream.println(YW_CLI_CONFIG_HELP);
-                // errStream.println(YW_CLI_EXAMPLES_HELP);
+                // errStream.println(CLI_CONFIG_HELP);
+                // errStream.println(CLI_EXAMPLES_HELP);
                 return ExitCode.SUCCESS;
             }
 
@@ -99,12 +104,19 @@ public class PaleocarBrowserWebApp {
 
     private static OptionParser createOptionsParser() throws Exception {
         
-        OptionParser parser = null;
-
-        parser = new OptionParser() {{
+        OptionParser parser = new OptionParser() {{
             acceptsAll(Arrays.asList("v", "version"), "Shows version, git, and build details.");
             acceptsAll(Arrays.asList("h", "help"), "Displays this help.");
+            acceptsAll(Arrays.asList("server.port"), "Sets PaloeCAR Browser web application service port.");
+            acceptsAll(Arrays.asList("paleocar-browser-config.url"), "Sets URL of service providing web application configuration.");
+            acceptsAll(Arrays.asList("paleocar-browser-config.data-file"), "Sets path to file containing web application configuration.");
+            acceptsAll(Arrays.asList("raster-data-service.url"), "Sets URL of raster data query service.");
+            acceptsAll(Arrays.asList("raster-data-service.data-dir"), "Sets path to directory containing queryable raster data files.");
+            acceptsAll(Arrays.asList("raster-tile-service.url"), "Sets URL of service providing map tiles for display.");
+            acceptsAll(Arrays.asList("raster-tile-service.tiles-dir"),"Sets path to directory containing map tile directory trees.");
         }};
+
+        parser.formatHelpWith(new BuiltinHelpFormatter(128, 2));
 
         return parser;
     }
