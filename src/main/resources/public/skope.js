@@ -301,7 +301,7 @@
             }
             
             // build the tile URL path + filename + year + color + leaflet params
-            var currentTileLayer_ = L.tileLayer(config.rasterTileServiceBaseUrl + '{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
+            var currentTileLayer_ = L.tileLayer(config.rasterTileServiceUrl + '{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
                 tms : true,
                 tile : _getActiveSelection(),
                 time : 1 + _getTime(),
@@ -320,7 +320,7 @@
 
         // handle the click ona  location, render the graphs and setup the download link
         function _getDetail(location) {
-            var req = config.rasterDataServiceBaseUrl + "timeseries?long=" + location.lng  + "&lat=" + location.lat;
+            var req = config.rasterDataServiceUrl + "timeseries?long=" + location.lng  + "&lat=" + location.lat;
             console.log(req);
             _pause();
             // remove old marker
@@ -346,7 +346,7 @@
                     var y1 = location.lat;
                     var startTime = $minX.val();
                     var endTime = $maxX.val();
-                    var url = config.rasterDataServiceBaseUrl + "timeseries-download?long=" + x1 + "&lat=" + y1 + "&startYear=" + startTime + "&endYear=" + endTime;
+                    var url = config.rasterDataServiceUrl + "timeseries-download?long=" + x1 + "&lat=" + y1 + "&startYear=" + startTime + "&endYear=" + endTime;
                     e.preventDefault(); // stop the browser from following
                     window.location.href = url;
                     return false;
