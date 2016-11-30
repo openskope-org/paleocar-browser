@@ -20,7 +20,7 @@ import java.util.Arrays;
 @ComponentScan(basePackages="org.openskope.component," 				+
                             "org.openskope.paleocarbrowser,"        +
                             "org.openskope.rasterdataservice,"      +
-                            "org.openskope.rest.rastertile"         )
+                            "org.openskope.statictileservice"       )
 public class PaleocarBrowser {
 
     public static VersionInfo versionInfo;
