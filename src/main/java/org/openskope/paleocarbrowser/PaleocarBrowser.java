@@ -17,7 +17,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 @SpringBootApplication
-@ComponentScan(basePackages="org.openskope.component," 				+
+@ComponentScan(basePackages="org.openskope.logger," 				+
                             "org.openskope.paleocarbrowser,"        +
                             "org.openskope.rasterdataservice,"      +
                             "org.openskope.statictileservice"       )

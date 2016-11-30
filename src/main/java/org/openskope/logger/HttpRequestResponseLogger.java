@@ -1,4 +1,4 @@
-package org.openskope.component;
+package org.openskope.logger;
 
 import java.io.IOException;
 
