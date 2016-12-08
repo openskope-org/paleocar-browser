@@ -69,7 +69,7 @@ To run the service on a different port, specify it using the `server-port` optio
 
     $ sudo java -jar paleocar-browser-0.1.2.jar --server.port=80
 
-starts the **PaleoCAR Browser** service on port 80. The `sudo` command is required in macOS and Linux environments when using port 80.
+starts the **PaleoCAR Browser** service on port 80. For Linux or macOS, if you want to run it on port 80, you can either proxy it through [Apache](https://www.digitalocean.com/community/tutorials/how-to-use-apache-http-server-as-reverse-proxy-using-mod_proxy-extension) or [Nginx](https://www.digitalocean.com/community/tutorials/understanding-nginx-http-proxying-load-balancing-buffering-and-caching), or use [authbind](http://manpages.ubuntu.com/manpages/wily/man1/authbind.1.html) on linux to allow a non-root user to serve content on port 80.
 
 ### Download the data files served by PaleoCAR browser
 
