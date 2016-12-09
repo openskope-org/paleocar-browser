@@ -1,7 +1,9 @@
-package org.openskope.paleocarbrowser;
+package org.openskope;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.ApplicationArguments;
@@ -17,10 +19,9 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 @SpringBootApplication
-@ComponentScan(basePackages="org.openskope.logger," 				+
-                            "org.openskope.paleocarbrowser,"        +
-                            "org.openskope.rasterdataservice,"      +
-                            "org.openskope.statictileservice"       )
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
 public class PaleocarBrowser {
 
     public static VersionInfo versionInfo;
