@@ -61,6 +61,12 @@
             <version>0.1.2-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.openskope</groupId>
+            <artifactId>static-tile-service</artifactId>
+            <version>0.1.2-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

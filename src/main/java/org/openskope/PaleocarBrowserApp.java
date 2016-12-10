@@ -22,7 +22,7 @@ import java.util.Arrays;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class PaleocarBrowser {
+public class PaleocarBrowserApp {
 
     public static VersionInfo versionInfo;
 
@@ -53,8 +53,8 @@ public class PaleocarBrowser {
     public static ExitCode startServiceForArgs(String [] args, 
         PrintStream outStream, PrintStream errStream) throws Exception{
 
-        PaleocarBrowser.outStream = outStream;
-        PaleocarBrowser.errStream = errStream;
+        PaleocarBrowserApp.outStream = outStream;
+        PaleocarBrowserApp.errStream = errStream;
 
         versionInfo = VersionInfo.loadVersionInfoFromResource(
             "PaleoCAR Browser", 
@@ -93,7 +93,7 @@ public class PaleocarBrowser {
                 return ExitCode.SUCCESS;
             }
 
-        SpringApplication.run(PaleocarBrowser.class, args);
+        SpringApplication.run(PaleocarBrowserApp.class, args);
         
         } catch (CliUsageException e) {
 //            printToolUsageErrors(e.getMessage());
@@ -113,8 +113,8 @@ public class PaleocarBrowser {
             acceptsAll(Arrays.asList("paleocar-browser-config.data-file"), "Sets path to file containing web application configuration.");
             acceptsAll(Arrays.asList("raster-data-service.url"), "Sets URL of raster data query service.");
             acceptsAll(Arrays.asList("raster-data-service.data-dir"), "Sets path to directory containing queryable raster data files.");
-            acceptsAll(Arrays.asList("raster-tile-service.url"), "Sets URL of service providing map tiles for display.");
-            acceptsAll(Arrays.asList("raster-tile-service.tiles-dir"),"Sets path to directory containing map tile directory trees.");
+            acceptsAll(Arrays.asList("static-tile-service.url"), "Sets URL of service providing static map tiles for display.");
+            acceptsAll(Arrays.asList("static-tile-service.tiles-dir"),"Sets path to directory containing static map tile directory trees.");
         }};
 
         parser.formatHelpWith(new BuiltinHelpFormatter(128, 2));

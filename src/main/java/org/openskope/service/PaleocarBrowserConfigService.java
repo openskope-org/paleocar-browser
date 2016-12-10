@@ -17,8 +17,8 @@ public class PaleocarBrowserConfigService implements InitializingBean {
 
 	@Value("${paleocar-browser-config.data-file}")	public String paleocarBrowserConfigDataFile;
 	@Value("${paleocar-browser-config.url}")  		public String paleocarBrowserConfigUrl;
-	@Value("${raster-tile-service.url}")  			public String rasterTileServiceUrl;
 	@Value("${raster-data-service.url}")  			public String rasterDataServiceUrl;
+	@Value("${static-tile-service.url}")  			public String staticTileServiceUrl;
 
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
@@ -30,7 +30,7 @@ public class PaleocarBrowserConfigService implements InitializingBean {
 	public PaleocarBrowserConfig getConfig() {
 		return new PaleocarBrowserConfig(
 			paleocarBrowserConfigUrl,
-			rasterTileServiceUrl,
+			staticTileServiceUrl,
             rasterDataServiceUrl,
             configData
 		);
