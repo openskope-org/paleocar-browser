@@ -3,9 +3,8 @@ sudo: required
 language: java
 
 jdk:
-  - openjdk7
-  - oraclejdk7
-  
+  - oraclejdk8
+
 install: true
 
 before_script:
