@@ -10,6 +10,9 @@ install: true
 
 before_script:
   - git clone https://github.com/yesworkflow-org/yw-utilities.git && cd yw-utilities && mvn install && cd ..
+  - git clone https://github.com/openskope/raster-data-service.git && cd raster-data-service && mvn install && cd ..
+  - git clone https://github.com/openskope/static-tile-service.git && cd static-tile-service && mvn install && cd ..
+  - git clone https://github.com/openskope/skope-logging-services.git && cd skope-logging-services && mvn install && cd ..
 
 script: mvn test
 
