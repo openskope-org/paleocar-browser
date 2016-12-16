@@ -1,10 +1,12 @@
 dist: trusty
 sudo: required
-
 language: java
 
 jdk:
   - openjdk7
   - oraclejdk7
+
+before_script:
+  - git clone https://github.com/yesworkflow-org/yw-utilities.git && cd yw-utilities && mvn install
 
 script: mvn test
