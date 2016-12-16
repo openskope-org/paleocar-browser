@@ -15,10 +15,10 @@ public class PaleocarBrowserConfigService implements InitializingBean {
 
 	private Object configData;
 
-	@Value("${paleocar-browser-config.data-file}")	public String paleocarBrowserConfigDataFile;
-	@Value("${paleocar-browser-config.url}")  		public String paleocarBrowserConfigUrl;
-	@Value("${raster-data-service.url}")  			public String rasterDataServiceUrl;
-	@Value("${static-tile-service.url}")  			public String staticTileServiceUrl;
+	@Value("${paleocar-browser-config.data-file}")	private String paleocarBrowserConfigDataFile;
+	@Value("${paleocar-browser-config.url}")  		private String paleocarBrowserConfigUrl;
+	@Value("${raster-data-service.url}")  			private String rasterDataServiceUrl;
+	@Value("${static-tile-service.url}")  			private String staticTileServiceUrl;
 
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {

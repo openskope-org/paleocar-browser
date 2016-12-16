@@ -14,8 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RequestMapping("${paleocar-browser-config.url}")
 public class PaleocarBrowserConfigController {
 
+	private final PaleocarBrowserConfigService configService;
+
 	@Autowired
-	public PaleocarBrowserConfigService configService;
+	public PaleocarBrowserConfigController(PaleocarBrowserConfigService configService) {
+		this.configService = configService;
+	}
 
 	@RequestMapping(value="config", method=RequestMethod.GET)
 	public PaleocarBrowserConfig getConfig() {
