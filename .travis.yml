@@ -7,9 +7,9 @@ jdk:
   - oraclejdk7
   
 install: true
-  
+
 before_script:
-  - git clone https://github.com/yesworkflow-org/yw-utilities.git && cd yw-utilities && mvn install
+  - git clone https://github.com/yesworkflow-org/yw-utilities.git && cd yw-utilities && mvn install && cd ..
 
 script: mvn test
 
