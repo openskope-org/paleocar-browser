@@ -22,9 +22,9 @@ public class PaleocarBrowserConfigService implements InitializingBean {
 
 	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
-		InputStream paleocarBrowserConfigDataStream = 
-			PaleocarBrowserConfigService.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigDataFile);
-		configData = new Yaml().load(paleocarBrowserConfigDataStream);
+		 InputStream paleocarBrowserConfigDataStream = 
+		 	PaleocarBrowserConfigService.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigDataFile);
+		 configData = new Yaml().load(paleocarBrowserConfigDataStream);
     }
 
 	public PaleocarBrowserConfig getConfig() {
