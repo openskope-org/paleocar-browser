@@ -19,15 +19,12 @@ import org.openskope.paleocarbrowser.service.PaleocarBrowserConfigService;
 @RunWith(MockitoJUnitRunner.class)
 public class PaleocarBrowserConfigControllerTest {
 
-    @InjectMocks
-    private PaleocarBrowserConfigController configController;
-
-    @Mock
-    private PaleocarBrowserConfigService configService;
+    @Mock private PaleocarBrowserConfigService configService;
+    @InjectMocks private PaleocarBrowserConfigController configController;
 
     @Test
     public void getConfigReturnsConfigProvidedByConfigService() {
-        PaleocarBrowserConfig expectedConfig = new PaleocarBrowserConfig();
+        PaleocarBrowserConfig expectedConfig = new PaleocarBrowserConfig(null,null,null,null);
         when(configService.getConfig()).thenReturn(expectedConfig);
         assertSame(expectedConfig, configController.getConfig());
     }

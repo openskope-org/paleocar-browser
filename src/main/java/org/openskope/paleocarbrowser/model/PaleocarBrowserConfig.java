@@ -8,10 +8,7 @@ public class PaleocarBrowserConfig {
 	private String rasterTileServiceUrl;
 	private String rasterDataServiceUrl;
 	private Object dataSets;
-
-    public PaleocarBrowserConfig() {
-    }
-
+    
     public PaleocarBrowserConfig(
         String paleocarBrowserUrl, 
         String rasterTileServiceUrl,
