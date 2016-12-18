@@ -20,7 +20,6 @@ public class PaleocarBrowserConfigService implements InitializingBean {
 	@Value("${raster-data-service.url}")  			private String rasterDataServiceUrl;
 	@Value("${static-tile-service.url}")  			private String staticTileServiceUrl;
 
-	@SuppressWarnings("unchecked")
 	public void afterPropertiesSet() throws Exception {
 		 InputStream paleocarBrowserConfigDataStream = 
 		 	PaleocarBrowserConfigService.class.getClassLoader().getResourceAsStream(paleocarBrowserConfigDataFile);

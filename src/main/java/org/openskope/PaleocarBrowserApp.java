@@ -24,12 +24,19 @@ import java.util.Arrays;
 @ComponentScan
 public class PaleocarBrowserApp {
 
-    public static VersionInfo versionInfo;
-
     private OptionSet options = null;
     private static PrintStream errStream;
     private static PrintStream outStream;    
 
+    
+    
+    
+    public static VersionInfo versionInfo = VersionInfo.loadVersionInfoFromResource(
+            "PaleoCAR Browser", 
+            "https://github.com/openskope/paleocar-browser.git",
+            "git.properties",
+            "maven.properties");  
+    
     public static void main(String[] args) {
 
         ExitCode exitCode;
@@ -54,13 +61,7 @@ public class PaleocarBrowserApp {
         PrintStream outStream, PrintStream errStream) throws Exception{
 
         PaleocarBrowserApp.outStream = outStream;
-        PaleocarBrowserApp.errStream = errStream;
-
-        versionInfo = VersionInfo.loadVersionInfoFromResource(
-            "PaleoCAR Browser", 
-            "https://github.com/openskope/paleocar-browser.git",
-            "git.properties",
-            "maven.properties");        
+        PaleocarBrowserApp.errStream = errStream;      
 
         try {
 
