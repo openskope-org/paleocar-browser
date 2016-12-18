@@ -32,8 +32,7 @@ public class PaleocarBrowserAppTests extends Tests {
         	"--static-tile-service.url            Sets URL of service providing static map tiles for display.   "	+ EOL +
         	"-v, --version                        Shows version, git, and build details.                        "	+ EOL;
 
-    @Test
-    public void testStartServiceForArgs_HelpOption() throws Exception {
+    @Test public void testStartServiceForArgs_HelpOption_ToStdout() throws Exception {
 
 		StdoutRecorder recorder = new StdoutRecorder(new StdoutRecorder.WrappedCode() {
 			public void execute() throws Exception {
@@ -41,6 +40,13 @@ public class PaleocarBrowserAppTests extends Tests {
 			}
 		});
 		
-		assertEquals(recorder.getStderrRecording(), expectedVersionBanner + expectedHelpOutput);
+		assertEquals(expectedVersionBanner + expectedHelpOutput, recorder.getStderrRecording());
     }
+
+    @Test public void testStartServiceForArgs_HelpOption_ToStreams() throws Exception {
+
+        PaleocarBrowserApp.startServiceForArgs(new String[] {"-h"}, stdoutStream, stderrStream);
+        assertEquals(expectedVersionBanner + expectedHelpOutput, stderrBuffer.toString());
+    }
+
 }
