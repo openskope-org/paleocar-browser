@@ -28,14 +28,11 @@ public class PaleocarBrowserApp {
     private static PrintStream errStream;
     private static PrintStream outStream;    
 
-    
-    
-    
     public static VersionInfo versionInfo = VersionInfo.loadVersionInfoFromResource(
             "PaleoCAR Browser", 
             "https://github.com/openskope/paleocar-browser.git",
             "git.properties",
-            "maven.properties");  
+            "maven.properties");
     
     public static void main(String[] args) {
 

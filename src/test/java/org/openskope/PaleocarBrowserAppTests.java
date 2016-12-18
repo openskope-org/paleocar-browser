@@ -18,6 +18,36 @@ public class PaleocarBrowserAppTests extends Tests {
     		PaleocarBrowserApp.versionInfo.gitCommitAbbrev
 	);
 
+	private String expectedVersionInfo = String.format(
+			"Remote repo: %s"				+ EOL +
+			"Git branch: %s"				+ EOL +
+			"Last commit: %s"				+ EOL +
+			"Commit time: %s"				+ EOL +
+			"Most recent tag: %s"			+ EOL +
+			"Commits since tag: %s"			+ EOL +
+			"Builder name: %s"				+ EOL +
+			"Builder email: %s"				+ EOL +
+			"Build host: %s"				+ EOL +
+			"Build platform: %s"			+ EOL +
+			"Build Java VM: %s"				+ EOL +
+			"Build Java version: JDK %s"	+ EOL +
+			"Build time: %s"				+ EOL,
+    		PaleocarBrowserApp.versionInfo.officialRepoUrl,
+    		PaleocarBrowserApp.versionInfo.gitBranch,
+    		PaleocarBrowserApp.versionInfo.gitCommitId,
+    		PaleocarBrowserApp.versionInfo.gitCommitTime,
+    		PaleocarBrowserApp.versionInfo.gitClosestTag,
+    		PaleocarBrowserApp.versionInfo.gitCommitsSinceTag,
+    		PaleocarBrowserApp.versionInfo.buildUserName,
+    		PaleocarBrowserApp.versionInfo.buildUserEmail,
+    		PaleocarBrowserApp.versionInfo.buildHost,
+    		PaleocarBrowserApp.versionInfo.buildPlatform,
+    		PaleocarBrowserApp.versionInfo.buildJavaVM,
+    		PaleocarBrowserApp.versionInfo.buildJavaVersion,
+    		PaleocarBrowserApp.versionInfo.buildTime
+    );
+			
+
 	private String expectedHelpOutput = 
         	"Option                               Description                                                   "	+ EOL +
         	"------                               -----------                                                   "	+ EOL +
@@ -32,6 +62,7 @@ public class PaleocarBrowserAppTests extends Tests {
         	"--static-tile-service.url            Sets URL of service providing static map tiles for display.   "	+ EOL +
         	"-v, --version                        Shows version, git, and build details.                        "	+ EOL;
 
+	
     @Test public void testStartServiceForArgs_HelpOption_ToStdout() throws Exception {
 
 		StdoutRecorder recorder = new StdoutRecorder(new StdoutRecorder.WrappedCode() {
@@ -44,9 +75,16 @@ public class PaleocarBrowserAppTests extends Tests {
     }
 
     @Test public void testStartServiceForArgs_HelpOption_ToStreams() throws Exception {
-
         PaleocarBrowserApp.startServiceForArgs(new String[] {"-h"}, stdoutStream, stderrStream);
         assertEquals(expectedVersionBanner + expectedHelpOutput, stderrBuffer.toString());
+        assertEquals("", stdoutBuffer.toString());
     }
+
+    @Test public void testStartServiceForArgs_VersionOption_ToStreams() throws Exception {
+        PaleocarBrowserApp.startServiceForArgs(new String[] {"-v"}, stdoutStream, stderrStream);
+        assertEquals(expectedVersionBanner + expectedVersionInfo, stderrBuffer.toString());
+        assertEquals("", stdoutBuffer.toString());
+    }
+
 
 }
