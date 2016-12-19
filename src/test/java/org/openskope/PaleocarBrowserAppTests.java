@@ -98,11 +98,11 @@ public class PaleocarBrowserAppTests extends Tests {
     @Test public void testStartServiceForArgs_BadOption() throws Exception {
     	Exception caught = null;
     	try {
-    		PaleocarBrowserApp.startServiceForArgs(new String[] {"-b"}, stdoutStream, stderrStream);
+    		PaleocarBrowserApp.startServiceForArgs(new String[] {"--BAD"}, stdoutStream, stderrStream);
     	} catch(Exception e) {
     		caught = e;
     	}
-    	assertNotNull(caught);
-    	assertEquals("b is not a recognized option", caught.getMessage());
+        assertEquals("BAD is not a recognized option" + EOL, stderrBuffer.toString());
+        assertEquals("", stdoutBuffer.toString());
     }
 }

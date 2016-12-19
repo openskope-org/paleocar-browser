@@ -68,7 +68,7 @@ public class PaleocarBrowserApp {
             try {
                 options = parser.parse(args);
             } catch (OptionException exception) {
-                throw new Exception(exception.getMessage());
+                throw new CliUsageException(exception.getMessage());
             }
 
             // print detailed software version info and exit if requested
@@ -93,6 +93,7 @@ public class PaleocarBrowserApp {
             SpringApplication.run(springBootAppClass, args);
         
         } catch (CliUsageException e) {
+        	errStream.println(e.getMessage());
 //            printToolUsageErrors(e.getMessage());
             return ExitCode.CLI_USAGE_ERROR;
         }
@@ -131,5 +132,10 @@ public class PaleocarBrowserApp {
         public int value() { return value;}
     }
 
-    public class CliUsageException extends Exception {};
+    @SuppressWarnings("serial")
+	public static class CliUsageException extends Exception {
+		public CliUsageException(String message) {
+			super(message);
+		};
+    }
 }
