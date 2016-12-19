@@ -3,10 +3,7 @@ os: Windows Server 2012
 
 install:
   - cmd: choco install maven -y -f
-  - cmd: git clone https://github.com/yesworkflow-org/yw-utilities.git
-  - cmd: cd yw-utilities
-  - cmd: mvn install
-  - cmd: cd ..
+  - cmd: "git clone https://github.com/yesworkflow-org/yw-utilities.git; cd yw-utilities; mvn install; cd .."
   - cmd: git clone https://github.com/openskope/skope-logging-services.git
   - cmd: cd skope-logging-services
   - cmd: mvn install
