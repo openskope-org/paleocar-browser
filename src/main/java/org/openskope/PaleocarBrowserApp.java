@@ -18,7 +18,7 @@ import java.util.Arrays;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan
-public abstract class PaleocarBrowserApp {
+public class PaleocarBrowserApp {
 
     protected static Class<PaleocarBrowserApp> springBootAppClass = PaleocarBrowserApp.class;
 
@@ -27,7 +27,7 @@ public abstract class PaleocarBrowserApp {
             "https://github.com/openskope/paleocar-browser.git",
             "git.properties",
             "maven.properties");
-    
+        
     public static void main(String[] args) throws Exception {
     	startServiceForArgs(args, System.out, System.err);
     }
@@ -93,5 +93,9 @@ public abstract class PaleocarBrowserApp {
         parser.formatHelpWith(new BuiltinHelpFormatter(128, 2));
 
         return parser;
+    }
+    
+    PaleocarBrowserApp() throws Exception {
+    	throw new Exception("The class PaleocarBrowserApp may not be instantiated");
     }
 }
