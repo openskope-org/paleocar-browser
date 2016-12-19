@@ -4,7 +4,8 @@ install:
   - cmd: choco install maven -y -f
   - cmd: SET PATH=C:\maven\apache-maven-3.2.5\bin;%JAVA_HOME%\bin;%PATH%
   - cmd: git clone https://github.com/yesworkflow-org/yw-utilities.git
-  - cmd: cd yw-utilities; mvn install
+  - cmd: cd yw-utilities
+  - cmd: mvn install
 #  - git clone https://github.com/openskope/skope-logging-services.git && cd skope-logging-services && mvn install && cd ..
 #  - git clone https://github.com/openskope/raster-data-service.git && cd raster-data-service && mvn install && cd ..
 #  - git clone https://github.com/openskope/static-tile-service.git && cd static-tile-service && mvn install && cd ..
