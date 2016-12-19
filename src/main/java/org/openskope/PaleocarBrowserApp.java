@@ -20,7 +20,7 @@ import java.util.Arrays;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class PaleocarBrowserApp {
+public abstract class PaleocarBrowserApp {
 
     private static Class<PaleocarBrowserApp> springBootAppClass = PaleocarBrowserApp.class;
 
@@ -38,7 +38,7 @@ public class PaleocarBrowserApp {
         ExitCode exitCode;
         
         try {
-            exitCode = startServiceForArgs(args);
+            exitCode = startServiceForArgs(args, System.out, System.err);
         } catch (Exception e) {
             e.printStackTrace();
             exitCode = ExitCode.UNCAUGHT_ERROR;
@@ -49,10 +49,6 @@ public class PaleocarBrowserApp {
         }
     }
 
-    public static ExitCode startServiceForArgs(String [] args) throws Exception {
-        return startServiceForArgs(args, System.out, System.err);
-    }
-    
     public static ExitCode startServiceForArgs(String [] args, 
         PrintStream outStream, PrintStream errStream) throws Exception{
 
@@ -132,8 +128,8 @@ public class PaleocarBrowserApp {
         public int value() { return value;}
     }
 
-    @SuppressWarnings("serial")
 	public static class CliUsageException extends Exception {
+		private static final long serialVersionUID = -394429139563416182L;
 		public CliUsageException(String message) {
 			super(message);
 		};
