@@ -96,13 +96,19 @@ public class PaleocarBrowserAppTests extends Tests {
     }
     
     @Test public void testStartServiceForArgs_BadOption() throws Exception {
-    	Exception caught = null;
-    	try {
-    		PaleocarBrowserApp.startServiceForArgs(new String[] {"--BAD"}, stdoutStream, stderrStream);
-    	} catch(Exception e) {
-    		caught = e;
-    	}
+    	PaleocarBrowserApp.startServiceForArgs(new String[] {"--BAD"}, stdoutStream, stderrStream);
         assertEquals("BAD is not a recognized option" + EOL, stderrBuffer.toString());
         assertEquals("", stdoutBuffer.toString());
+    }
+    
+    @Test public void testMain_NullSpringApplication() throws Exception {
+    	PaleocarBrowserApp.springBootAppClass = null;
+		StdoutRecorder recorder = new StdoutRecorder(new StdoutRecorder.WrappedCode() {
+			public void execute() throws Exception {
+				PaleocarBrowserApp.main(new String[] {});
+			}
+		});
+		assertTrue(recorder.getStderrRecording().startsWith(
+				"java.lang.IllegalArgumentException: Source must not be null"));
     }
 }
