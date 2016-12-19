@@ -3,7 +3,6 @@ package org.openskope;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.yesworkflow.util.cli.VersionInfo;
@@ -17,7 +16,6 @@ import java.io.PrintStream;
 import java.util.Arrays;
 
 @SpringBootApplication
-@Configuration
 @EnableAutoConfiguration
 @ComponentScan
 public abstract class PaleocarBrowserApp {
@@ -67,15 +65,13 @@ public abstract class PaleocarBrowserApp {
                 throw new CliUsageException(exception.getMessage());
             }
 
-            // print detailed software version info and exit if requested
             if (options.has("v")) {
+                // print detailed software version info and exit
                 errStream.print(versionInfo.versionBanner());
                 errStream.print(versionInfo.versionDetails());
-                return ExitCode.SUCCESS;
-            }
 
-            // print help and exit if requested
-            if (options.has("h")) {
+            } else if (options.has("h")) {
+                // print help and exit if requested
                 errStream.print(versionInfo.versionBanner());
                 // errStream.println(CLI_USAGE_HELP);
                 // errStream.println(CLI_COMMAND_HELP);
@@ -83,11 +79,10 @@ public abstract class PaleocarBrowserApp {
                 // errStream.println();
                 // errStream.println(CLI_CONFIG_HELP);
                 // errStream.println(CLI_EXAMPLES_HELP);
-                return ExitCode.SUCCESS;
+                
+            } else {
+            	SpringApplication.run(springBootAppClass, args);
             }
-
-            SpringApplication.run(springBootAppClass, args);
-        
         } catch (CliUsageException e) {
         	errStream.println(e.getMessage());
 //            printToolUsageErrors(e.getMessage());
