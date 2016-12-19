@@ -11,10 +11,11 @@ public class PaleocarBrowserAppTests extends Tests {
 
 	private String expectedVersionBanner = String.format(
     		"-----------------------------------------------------------------------------"	+ EOL +
-    		"PaleoCAR Browser %s-%s (branch master, commit %s)"								+ EOL +
+    		"PaleoCAR Browser %s-%s (branch %s, commit %s)"									+ EOL +
     		"-----------------------------------------------------------------------------"	+ EOL,
     		PaleocarBrowserApp.versionInfo.buildVersion,
     		PaleocarBrowserApp.versionInfo.gitCommitsSinceTag,
+    		PaleocarBrowserApp.versionInfo.gitBranch,
     		PaleocarBrowserApp.versionInfo.gitCommitAbbrev
 	);
 
