@@ -3,7 +3,6 @@ os: Windows Server 2012
 
 install:
   - cmd: choco install maven -y -f
-  - cmd: SET PATH=C:\maven\apache-maven-3.2.5\bin;%JAVA_HOME%\bin;%PATH%
   - cmd: git clone https://github.com/yesworkflow-org/yw-utilities.git
   - cmd: cd yw-utilities
   - cmd: mvn install
