@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.ApplicationRunner;
-import org.springframework.boot.ApplicationArguments;
 
 import org.yesworkflow.util.cli.VersionInfo;
 
@@ -24,7 +22,8 @@ import java.util.Arrays;
 @ComponentScan
 public class PaleocarBrowserApp {
 
-    private OptionSet options = null;
+    private static Class<PaleocarBrowserApp> springBootAppClass = PaleocarBrowserApp.class;
+
     private static PrintStream errStream;
     private static PrintStream outStream;    
 
@@ -91,7 +90,7 @@ public class PaleocarBrowserApp {
                 return ExitCode.SUCCESS;
             }
 
-        SpringApplication.run(PaleocarBrowserApp.class, args);
+            SpringApplication.run(springBootAppClass, args);
         
         } catch (CliUsageException e) {
 //            printToolUsageErrors(e.getMessage());

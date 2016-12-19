@@ -63,28 +63,35 @@ public class PaleocarBrowserAppTests extends Tests {
         	"-v, --version                        Shows version, git, and build details.                        "	+ EOL;
 
 	
-    @Test public void testStartServiceForArgs_HelpOption_ToStdout() throws Exception {
-
+    @Test public void testStartServiceForArgs_HelpOption_ToStandardStreams() throws Exception {
 		StdoutRecorder recorder = new StdoutRecorder(new StdoutRecorder.WrappedCode() {
 			public void execute() throws Exception {
                 PaleocarBrowserApp.startServiceForArgs(new String[] {"-h"});
 			}
 		});
-		
 		assertEquals(expectedVersionBanner + expectedHelpOutput, recorder.getStderrRecording());
+		assertEquals("", recorder.getStdoutRecording());
     }
 
-    @Test public void testStartServiceForArgs_HelpOption_ToStreams() throws Exception {
+    @Test public void testStartServiceForArgs_HelpOption_ToStreamBuffers() throws Exception {
         PaleocarBrowserApp.startServiceForArgs(new String[] {"-h"}, stdoutStream, stderrStream);
         assertEquals(expectedVersionBanner + expectedHelpOutput, stderrBuffer.toString());
         assertEquals("", stdoutBuffer.toString());
     }
 
-    @Test public void testStartServiceForArgs_VersionOption_ToStreams() throws Exception {
+    @Test public void testStartServiceForArgs_VersionOption_ToStandardStreams() throws Exception {
+		StdoutRecorder recorder = new StdoutRecorder(new StdoutRecorder.WrappedCode() {
+			public void execute() throws Exception {
+                PaleocarBrowserApp.startServiceForArgs(new String[] {"-v"});
+			}
+		});
+		assertEquals(expectedVersionBanner + expectedVersionInfo, recorder.getStderrRecording());
+		assertEquals("", recorder.getStdoutRecording());
+    }
+    
+    @Test public void testStartServiceForArgs_VersionOption_ToStreamBuffers() throws Exception {
         PaleocarBrowserApp.startServiceForArgs(new String[] {"-v"}, stdoutStream, stderrStream);
         assertEquals(expectedVersionBanner + expectedVersionInfo, stderrBuffer.toString());
         assertEquals("", stdoutBuffer.toString());
     }
-
-
 }

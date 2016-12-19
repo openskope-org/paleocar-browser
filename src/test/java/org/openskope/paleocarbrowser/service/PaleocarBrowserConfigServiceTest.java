@@ -37,7 +37,7 @@ public class PaleocarBrowserConfigServiceTest {
         assertEquals("http://raster-tile-service/", configService.getConfig().getRasterTileServiceUrl()); 
     }
 
-    @Configuration public static class SpringConfig {
+    @Configuration static class SpringConfig {
 
         @Bean public static PropertySourcesPlaceholderConfigurer properties() throws Exception {
             final PropertySourcesPlaceholderConfigurer pspc = new PropertySourcesPlaceholderConfigurer();
