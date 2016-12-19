@@ -94,4 +94,15 @@ public class PaleocarBrowserAppTests extends Tests {
         assertEquals(expectedVersionBanner + expectedVersionInfo, stderrBuffer.toString());
         assertEquals("", stdoutBuffer.toString());
     }
+    
+    @Test public void testStartServiceForArgs_BadOption() throws Exception {
+    	Exception caught = null;
+    	try {
+    		PaleocarBrowserApp.startServiceForArgs(new String[] {"-b"}, stdoutStream, stderrStream);
+    	} catch(Exception e) {
+    		caught = e;
+    	}
+    	assertNotNull(caught);
+    	assertEquals("b is not a recognized option", caught.getMessage());
+    }
 }
