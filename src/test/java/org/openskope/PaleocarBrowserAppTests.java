@@ -108,7 +108,6 @@ public class PaleocarBrowserAppTests extends Tests {
 				PaleocarBrowserApp.main(new String[] {});
 			}
 		});
-		assertTrue(recorder.getStderrRecording().startsWith(
-				"java.lang.IllegalArgumentException: Source must not be null"));
+		assertTrue(recorder.getStderrRecording().startsWith("Error starting Spring Boot Application"));
     }
 }

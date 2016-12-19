@@ -22,29 +22,21 @@ public abstract class PaleocarBrowserApp {
 
     protected static Class<PaleocarBrowserApp> springBootAppClass = PaleocarBrowserApp.class;
 
-    private static PrintStream errStream;
-    private static PrintStream outStream;
-
     public static VersionInfo versionInfo = VersionInfo.loadVersionInfoFromResource(
             "PaleoCAR Browser", 
             "https://github.com/openskope/paleocar-browser.git",
             "git.properties",
             "maven.properties");
     
-    public static void main(String[] args) {
-
-        try {
-            startServiceForArgs(args, System.out, System.err);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws Exception {
+    	startServiceForArgs(args, System.out, System.err);
     }
 
     public static void startServiceForArgs(String [] args, 
     		PrintStream outStream, PrintStream errStream) throws Exception{
 
-        PaleocarBrowserApp.outStream = outStream;
-        PaleocarBrowserApp.errStream = errStream;      
+    	System.setErr(errStream);
+    	System.setOut(outStream);
 
         OptionParser parser = createOptionsParser();
         OptionSet options;
@@ -76,7 +68,12 @@ public abstract class PaleocarBrowserApp {
             return;
         }
         
-    	SpringApplication.run(springBootAppClass, args);
+        try {
+        	SpringApplication.run(springBootAppClass, args);
+        } catch(Exception e) {
+        	System.err.println("Error starting Spring Boot Application");
+            e.printStackTrace();
+        }
     }
 
     private static OptionParser createOptionsParser() throws Exception {
@@ -96,13 +93,5 @@ public abstract class PaleocarBrowserApp {
         parser.formatHelpWith(new BuiltinHelpFormatter(128, 2));
 
         return parser;
-    }
-
-
-	public static class CliUsageException extends Exception {
-		private static final long serialVersionUID = -394429139563416182L;
-		public CliUsageException(String message) {
-			super(message);
-		};
     }
 }
