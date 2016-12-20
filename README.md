@@ -1,6 +1,10 @@
 PaleoCAR Browser
 ================
 
+[![Build Status](https://travis-ci.org/openskope/paleocar-browser.svg?branch=master)](https://travis-ci.org/openskope/paleocar-browser)
+[![Build status](https://ci.appveyor.com/api/projects/status/xpuyyvc3s44sc24d?svg=true)](https://ci.appveyor.com/project/TimothyMcPhillips/paleocar-browser)
+[![codecov](https://codecov.io/gh/openskope/paleocar-browser/branch/master/graph/badge.svg)](https://codecov.io/gh/openskope/paleocar-browser)
+
 This repo represents an exploration of alternative technologies for implementing the SKOPE system.  It is a fork of [digital-antiquity/skope](https://github.com/digital-antiquity/skope) 
 which stores code for the SKOPE I prototype.  The current implementation of the **PaleoCAR Browser** is designed to (1) make it easy for the browser-based frontend to employ different implementations of the backend services; and (2) enable anyone to use the **PaleoCAR Browser** with different data sets without installing this data on the production server.
 
