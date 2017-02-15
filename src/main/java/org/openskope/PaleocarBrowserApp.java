@@ -94,8 +94,4 @@ public class PaleocarBrowserApp {
 
         return parser;
     }
-    
-    PaleocarBrowserApp() throws Exception {
-    	throw new Exception("The class PaleocarBrowserApp may not be instantiated");
-    }
 }

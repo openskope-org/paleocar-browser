@@ -111,14 +111,4 @@ public class PaleocarBrowserAppTests extends Tests {
 		});
 		assertTrue(recorder.getStderrRecording().startsWith("Error starting Spring Boot Application"));
     }
-    
-    @Test public void test_ClassNotInstantiable() {
-    	Exception caught = null;
-    	try { new PaleocarBrowserApp();
-    	} catch(Exception e) {
-    		caught = e;
-    	}
-    	assertNotNull(caught);
-    	assertEquals("The class PaleocarBrowserApp may not be instantiated", caught.getMessage());
-    }
 }
