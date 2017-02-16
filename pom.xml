@@ -5,7 +5,7 @@
 
     <groupId>org.openskope</groupId>
     <artifactId>paleocar-browser</artifactId>
-    <version>0.1.2</version>
+    <version>0.1.3</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -46,25 +46,25 @@
         <dependency>
             <groupId>org.yesworkflow</groupId>
             <artifactId>yw-utilities</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.openskope</groupId>
             <artifactId>raster-data-service</artifactId>
-            <version>0.1.2-SNAPSHOT</version>
+            <version>0.1.3</version>
         </dependency>
 
         <dependency>
             <groupId>org.openskope</groupId>
             <artifactId>static-tile-service</artifactId>
-            <version>0.1.2-SNAPSHOT</version>
+            <version>0.1.3</version>
         </dependency>
 
        <dependency>
             <groupId>org.openskope</groupId>
             <artifactId>http-request-logger</artifactId>
-            <version>0.1.2-SNAPSHOT</version>
+            <version>0.1.3</version>
         </dependency>
 
         <dependency>
