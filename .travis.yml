@@ -1,26 +1,8 @@
 sudo: required
 dist: trusty
-
 language: java
-
-os:
-  - linux
-  - osx
-
-osx_image: xcode8
-
-#jdk:
-#  - oraclejdk8
-
+os: linux
 install: true
-
-before_script:
-  - git clone https://github.com/yesworkflow-org/yw-utilities.git && cd yw-utilities && mvn install && cd ..
-  - git clone https://github.com/openskope/skope-logging-services.git && cd skope-logging-services && mvn install && cd ..
-  - git clone https://github.com/openskope/raster-data-service.git && cd raster-data-service && mvn install && cd ..
-  - git clone https://github.com/openskope/static-tile-service.git && cd static-tile-service && mvn install && cd ..
-
 script: mvn cobertura:cobertura
-
 after_success:
   - bash <(curl -s https://codecov.io/bash)
