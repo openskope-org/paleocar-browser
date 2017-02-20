@@ -8,7 +8,7 @@
         // -108.86352539062499, 34.56085936708384) x (-108.86352539062499, 34.56085936708384)
         var NORTH, SOUTH, EAST, WEST;
         var marker = undefined;
-        var DEFAULT_START_TIME = 0;
+        var DEFAULT_START_TIME = 1;
         var DEFAULT_END_TIME = 2000;
         var $minX = $("#minx");
         var $maxX = $("#maxx");
@@ -320,7 +320,7 @@
 
         // handle the click ona  location, render the graphs and setup the download link
         function _getDetail(location) {
-            var req = config.rasterDataServiceUrl + "timeseries?long=" + location.lng  + "&lat=" + location.lat;
+            var req = config.rasterDataServiceUrl + "timeseries?long=" + location.lng  + "&lat=" + location.lat + "&callback=?";
             console.log(req);
             _pause();
             // remove old marker

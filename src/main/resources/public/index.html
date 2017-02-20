@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="lib/leaflet-draw/0.2.4/leaflet.draw.css" />
     <link rel="stylesheet" href="skope.css" />     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <style>
+    .hideanimation {display:none;visibility:hidden;}
+    </style>
 </head>
 
 <body id="page-home" class="container-fluid" ng-controller="MainController">>
@@ -55,7 +59,7 @@
 	                     <div class="form-group">
                <p><b>Display Dates 
                     <label for="minx">from </label>
-                    <input name="minx" class="form-control" id="minx" value="0" style="width:70px" >
+                    <input name="minx" class="form-control" id="minx" value="1" style="width:70px" >
                   <label for="minx"> to </label>
                   <input name="maxx" id="maxx" value="2000"  class="form-control " style="width:70px" /></b>
                 <button name="reset" type="button" class="btn button btn-default" id="reset-time" style="width:70px">
@@ -82,10 +86,9 @@
     <div class="col-md-12">
             <form class="form-inline" role="form">
     <div class="btn-group" role="group" aria-label="...">
-<!--         <button name="pause" type="button"  class="btn-default btn" id="pause"><span class="glyphicon glyphicon-pause" aria-hidden="true"></span></button> -->
-        <button name="play"  type="button" class="btn-default btn" id="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
-        <input id="slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="2000" data-slider-step="1" data-slider-value="0"/>
-        <button name="resetslider"   type="button" class="btn-default btn" id="resetslider"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span></button>
+        <button name="play"  type="button" class="btn-default btn hideanimation" id="play"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+        <input id="slider" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="2000" data-slider-step="1" data-slider-value="1"/>
+        <button name="resetslider"   type="button" class="btn-default btn hideanimation" id="resetslider"><span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span></button>
     </div><span id="time"></span><br/>
 </div>
 <br/>
