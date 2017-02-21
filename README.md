@@ -88,6 +88,8 @@ To run the service on a different port, specify it using the `server-port` optio
 
 starts the **PaleoCAR Browser** service on port 80. For Linux or macOS, if you want to run it on port 80, you can either proxy it through [Apache](https://www.digitalocean.com/community/tutorials/how-to-use-apache-http-server-as-reverse-proxy-using-mod_proxy-extension) or [Nginx](https://www.digitalocean.com/community/tutorials/understanding-nginx-http-proxying-load-balancing-buffering-and-caching), or use [authbind](http://manpages.ubuntu.com/manpages/wily/man1/authbind.1.html) on linux to allow a non-root user to serve content on port 80.
 
+See below for how to specify the server port in a properties file.
+
 ### Download the data files served by PaleoCAR browser
 
 The minimal data for running the **PaleoCAR Browser** may be downloaded from [xkope.org:8000](http://xkope.org:8000).
@@ -133,13 +135,15 @@ Similarly, to run **PaleoCAR Browser** on a Windows computer where the data file
 
 Due to the default values for the two command line options, the above is equivalent to changing directory to `E:/SKOPE/data` and executing the jar file without any options at all.
 
+### Store customized configuration in a properties file
+
 Note that any of the command-line options described above also can be given in a `application.properties` file in the directory where the application is started.  For example, if the current directory contains a file named `application.properties` with these contents:
 
     server.port                     = 8080
     raster-data-service.data-dir    = data
     static-tile-service.url         = http://demo.envirecon.org/browse/img
 
-then an instance of PaleoCAR browser started from this directory will accept connections on port 8080, will serve time series data from GeoTIFF files found in the `data` subdirectory, and will pull map tiles from `http://demo.envirecon.org/browse/img`. Options given on the command line as above will override property values given in this file.
+then an instance of PaleoCAR browser started from this directory will accept connections on port 8080, will serve time series data from GeoTIFF files found in the `data` subdirectory, and will pull map tiles from `http://demo.envirecon.org/browse/img`. Options given on the command line will override property values given in this file.
 
 ### Use a remote tile server instead of locally stored map tiles
 
