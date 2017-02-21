@@ -64,11 +64,11 @@ Install one of the `win32` or `x64` packages (for 32-bit and 64-bit Windows, res
 
 A pre-built jar file is included in each [release](https://github.com/openskope/paleocar-browser/releases) of the **PaleoCAR browser** package.  Download the gzipped jar file to your system.  The release jar file corresponding to this version of the README is named `paleocar-browser-0.1.3.jar.gz`.
 
-Unzip the jar file at the command prompt by opening a terminal, navigation to the directory where you stored the downloaded file, and running gunzip:
+Use `gunzip` to unzip the jar file at the command prompt:
 
     $ gunzip paleocar-browser-0.1.3.jar.gz
 
-You will now have a file named `paleocar-browser-0.1.3.jar`
+You will now have a file named `paleocar-browser-0.1.3.jar`.
 
 ### Run the jar file
 
@@ -106,7 +106,7 @@ Precomputed map display tiles for year 1 CE are stored in gzipped tar files:
 * [GDD_may_sept_demosaic_tiles-1.tar.gz](http://xkope.org:8000/GDD_may_sept_demosaic_tiles-1.tar.gz)
 * [PPT_water_year_tiles-1.tar.gz](http://xkope.org:8000/PPT_water_year_tiles-1.tar.gz)
 
-Download and expand (using `gunzip`) these archive. If you have insufficient disk space you may store the data files on a USB Flash drive and attach this drive when running the **PaleoCAR Browser** application.  The application runs well in this mode.
+Download and expand (using `gunzip`) these archive. If you have insufficient disk space you may store the data files on a USB flash drive and attach this drive when running the **PaleoCAR Browser** application.  The application runs well in this mode.
 
 ### Specify the location of data when starting the PaleoCAR Browser
 
