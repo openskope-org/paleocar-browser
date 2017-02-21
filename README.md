@@ -135,6 +135,16 @@ Similarly, to run **PaleoCAR Browser** on a Windows computer where the data file
 
 Due to the default values for the two command line options, the above is equivalent to changing directory to `E:/SKOPE/data` and executing the jar file without any options at all.
 
+
+### Use a remote tile server instead of locally stored map tiles
+
+The archives of map tiles available for download cover the year 1 CE only.  Map tiles for the full 2000 years of the PaleoCAR reconstruction currently are publicly accessible at http://demo.envirecon.org/browse/img.  To instruct the **PaleoCAR Browser** to display map tiles available from this map tile server use the `--static-tile-service.url` option. For example,
+
+    $ java -jar paleocar-browser-0.1.3.jar                                      \             
+                --static-tile-service.url=http://demo.envirecon.org/browse/img
+
+All 2000 years of map tiles will then be accessible through the browser interface without downloading them to your computer.
+
 ### Store customized configuration in a properties file
 
 Note that any of the command-line options described above also can be given in a `application.properties` file in the directory where the application is started.  For example, if the current directory contains a file named `application.properties` with these contents:
@@ -145,11 +155,3 @@ Note that any of the command-line options described above also can be given in a
 
 then an instance of PaleoCAR browser started from this directory will accept connections on port 8080, will serve time series data from GeoTIFF files found in the `data` subdirectory, and will pull map tiles from `http://demo.envirecon.org/browse/img`. Options given on the command line will override property values given in this file.
 
-### Use a remote tile server instead of locally stored map tiles
-
-The archives of map tiles available for download cover the year 1 CE only.  Map tiles for the full 2000 years of the PaleoCAR reconstruction currently are publicly accessible at http://demo.envirecon.org/browse/img.  To instruct the **PaleoCAR Browser** to display map tiles available from this map tile server use the `--static-tile-service.url` option. For example,
-
-    $ java -jar paleocar-browser-0.1.3.jar                                      \             
-                --static-tile-service.url=http://demo.envirecon.org/browse/img
-
-All 2000 years of map tiles will then be accessible through the browser interface without downloading them to your computer.
