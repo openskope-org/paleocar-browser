@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.yesworkflow.util.cli.VersionInfo;
 
 import joptsimple.BuiltinHelpFormatter;
@@ -18,7 +19,7 @@ import java.util.Arrays;
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan
-public class PaleocarBrowserApp {
+public class PaleocarBrowserApp extends SpringBootServletInitializer  {
 
     protected static Class<PaleocarBrowserApp> springBootAppClass = PaleocarBrowserApp.class;
 
@@ -27,7 +28,12 @@ public class PaleocarBrowserApp {
             "https://github.com/openskope/paleocar-browser.git",
             "git.properties",
             "maven.properties");
-        
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(springBootAppClass);
+    }
+    
     public static void main(String[] args) throws Exception {
     	startServiceForArgs(args, System.out, System.err);
     }
