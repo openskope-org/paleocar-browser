@@ -304,7 +304,7 @@
             var currentTileLayer_ = L.tileLayer(config.rasterTileServiceUrl + '{tile}/tiles/{type}-{time}-color/{z}/{x}/{y}.png', {
                 tms : true,
                 tile : _getActiveSelection(),
-                time : 1 + _getTime(),
+                time : _getTime(),
                 type : type,
                 opacity : $("#opacity").val()
             });
@@ -320,7 +320,7 @@
 
         // handle the click ona  location, render the graphs and setup the download link
         function _getDetail(location) {
-            var req = config.rasterDataServiceUrl + "timeseries?long=" + location.lng  + "&lat=" + location.lat + "&callback=?";
+            var req = config.rasterDataServiceUrl + "timeseries?long=" + location.lng  + "&lat=" + location.lat;
             console.log(req);
             _pause();
             // remove old marker
@@ -551,7 +551,7 @@
         }
 
         angular.element(document).ready(function() {
-            $http.get("/paleocar-browser/api/v1/config")
+            $http.get("paleocar-browser-webapp/api/v1/config")
                 .then(onConfigReceived);
         });
     };

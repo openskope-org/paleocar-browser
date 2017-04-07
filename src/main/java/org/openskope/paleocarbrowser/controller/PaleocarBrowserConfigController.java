@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController 
 @EnableAutoConfiguration 
-@RequestMapping("${paleocar-browser-config.url}")
+@RequestMapping("${paleocar-browser.config-endpoint}")
 public class PaleocarBrowserConfigController {
 
 	private final PaleocarBrowserConfigService configService;

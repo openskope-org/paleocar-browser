@@ -15,10 +15,10 @@ public class PaleocarBrowserConfigService implements InitializingBean {
 
 	private Object configData;
 
-	@Value("${paleocar-browser-config.data-file}")	private String paleocarBrowserConfigDataFile;
-	@Value("${paleocar-browser-config.url}")  		private String paleocarBrowserConfigUrl;
-	@Value("${raster-data-service.url}")  			private String rasterDataServiceUrl;
-	@Value("${static-tile-service.url}")  			private String staticTileServiceUrl;
+	@Value("${paleocar-browser.config-file}")	    private String paleocarBrowserConfigDataFile;
+	@Value("${paleocar-browser.config-endpoint}")  	private String paleocarBrowserConfigEndpoint;
+	@Value("${raster-data-service.endpoint}")  		private String rasterDataServiceEndpoint;
+	@Value("${static-tile-service.endpoint}")  		private String staticTileServiceEndpoint;
 
 	public void afterPropertiesSet() throws Exception {
 		 InputStream paleocarBrowserConfigDataStream = 
@@ -28,9 +28,9 @@ public class PaleocarBrowserConfigService implements InitializingBean {
 
 	public PaleocarBrowserConfig getConfig() {
 		return new PaleocarBrowserConfig(
-			paleocarBrowserConfigUrl,
-			staticTileServiceUrl,
-            rasterDataServiceUrl,
+			paleocarBrowserConfigEndpoint,
+			staticTileServiceEndpoint,
+            rasterDataServiceEndpoint,
             configData
 		);
 	}
