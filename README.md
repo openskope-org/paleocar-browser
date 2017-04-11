@@ -155,3 +155,10 @@ Note that any of the command-line options described above also can be given in a
 
 then an instance of PaleoCAR browser started from this directory will accept connections on port 8080, will serve time series data from GeoTIFF files found in the `data` subdirectory, and will pull map tiles from `http://demo.envirecon.org/browse/img`. Options given on the command line will override property values given in this file.
 
+
+Deploying the PaleoCAR Browser service to Tomcat
+------------------------------------------------
+
+The WAR file associated with a release of the  **PaleoCAR Browser** alternatively may be deployed to a Tomcat instance.  Simply rename the WAR file to reflect the name you wish to give the web application and copy the renamed WAR file to the webapps directory for your Tomcat instance.
+
+Once Tomcat has expanded the WAR file, edit the `application.properties` file in the `WEB-INF/classes` directory of the web application directory tree to set the properties as needed for your environment.
