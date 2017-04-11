@@ -42,10 +42,10 @@ public class PaleocarBrowserConfigServiceTest {
         @Bean public static PropertySourcesPlaceholderConfigurer properties() throws Exception {
             final PropertySourcesPlaceholderConfigurer pspc = new PropertySourcesPlaceholderConfigurer();
             Properties properties = new Properties();
-            properties.setProperty("paleocar-browser-config.data-file", "datasets_test.yaml");
-            properties.setProperty("paleocar-browser-config.url", "http://paleocar-browser/");
-            properties.setProperty("raster-data-service.url", "http://raster-data-service");
-            properties.setProperty("static-tile-service.url", "http://raster-tile-service");
+            properties.setProperty("paleocar-browser.config-file",      "datasets_test.yaml");
+            properties.setProperty("paleocar-browser.config-endpoint",  "http://paleocar-browser/");
+            properties.setProperty("raster-data-service.endpoint",      "http://raster-data-service");
+            properties.setProperty("static-tile-service.endpoint",      "http://raster-tile-service");
             pspc.setProperties(properties);
             return pspc;
         }
